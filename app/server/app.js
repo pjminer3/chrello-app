@@ -10,6 +10,6 @@ app.use(publicPath);
 
 app.get('/', (req, res) => {
   res.sendFile(indexPath);
-})
+});
 
 export default app;

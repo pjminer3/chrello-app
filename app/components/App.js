@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 
-class App extends Component {
-  render() {
+const App = (props) => {
     return (
       <div>Your React Node app is set up</div>
-    )
-  }
+    );
 }
 
 export default App;
