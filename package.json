@@ -10,7 +10,9 @@
     "build:client": "webpack --config ./webpack.config.js/",
     "build:watch:client": "webpack --config ./webpack.config.js/ --watch",
     "start:dev": "parallelshell 'npm run build:watch:server' 'npm run build:watch:client' 'nodemon ./build/server/index.js'",
-    "start:dev:client": "webpack-dev-server"
+    "start:dev:client": "webpack-dev-server",
+    "build:prod": "npm run build:server && npm run build:client",
+    "start": "npm run build:prod && NODE_ENV=production node ./build/server/index.js"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,12 @@
   "dependencies": {
     "express": "^4.16.2",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "redux": "^3.7.2",
+    "redux-form": "^7.2.3",
+    "redux-promise": "^0.5.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

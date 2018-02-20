@@ -7,20 +7,20 @@ module.exports = {
   entry: ['./app/index.js'],
   output: {
     path: path.join(__dirname, 'build'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     loaders: [
       {
-        test: /.js$/,
+        test: /.jsx?$/,
         loader: 'babel-loader',
         include: path.join(__dirname, 'app'),
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'react']
-        }
-      }
-    ]
+          presets: ['es2015', 'react'],
+        },
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
