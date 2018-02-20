@@ -8,7 +8,7 @@ const indexPath = path.join(__dirname, '../index.html'); // sets indexPath equal
 
 app.use(publicPath);
 
-app.get('/', (req, res) => {
+app.get("/home", (req, res) => {
   res.sendFile(indexPath);
 });
 
