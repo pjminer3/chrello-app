@@ -14,7 +14,7 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <Router >
       <div>
-        <Route path="/home" component={HomePage} />
+        <Route path="/" component={HomePage} />
       </div>
     </Router>
   </Provider>
