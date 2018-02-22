@@ -11,12 +11,12 @@ export default function () {
         </div>
 
         {/* New Project Button... TODO: create popup component for creating a new project */}
-        <button type="button" className="btn btn-default navbar-btn navbar-left">New Project</button>
+        <button type="button" className="btn btn-default navbar-btn navbar-left">New Category</button>
 
         {/* Searchbar */}
         <form className="navbar-form navbar-right">
           <div className="form-group">
-            <input type="text" className="form-control" placeholder="Search Projects..." />
+            <input type="text" className="form-control" placeholder="Search Boards..." />
             {/* TODO: Eventually have auto-rendering dropdown list of Projects with what's typed... onChange */}
           </div>
         </form>
