@@ -1,10 +1,28 @@
 // this reducer will control board state and will have mulitple cases to catch different types of actions
+import { NEW_CATEGORY } from '../actions';
 
 export default function (state = { byId: {}, allIds: [] }, action) {
-  console.log('Inside Projects Reducer')
+  // clone state
+  // const newState = { ...state };
+
   switch (action.type) {
-    case 'EXAMPLE CASE':
-      return [...state, action.payload];
+    case NEW_CATEGORY: // <-- Change to variable
+      console.log('We are inside NEW_CATEOGRY');
+      // edge case if its a duplicate category name
+      if (state.byId[action.payload]) {
+        return state;
+      }
+
+      // add new Category byId
+      state.byId[action.payload] = {
+        id: action.payload,
+        boards: [],
+      };
+
+      // add new Category to total categories
+      state.allIds = [action.payload, ...state.allIds];
+
+      return state;
     default:
       return state;
   }

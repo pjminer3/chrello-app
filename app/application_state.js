@@ -20,14 +20,14 @@ const applicationState = {
     },
     allIds: ['board1', 'board2'],
   },
-  projects: {
+  categories: {
     byId: {
-      proj1: {
-        id: 'proj1',
+      cat1: {
+        id: 'cat1',
         boards: ['board1', 'board2'],
       },
     },
-    allIds: ['proj1'],
+    allIds: ['cat1'],
   },
   lists: {
     byId: {
