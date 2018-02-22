@@ -15,6 +15,7 @@ class Header extends Component {
     };
 
     this.updateState = this.updateState.bind(this);
+    this.callNewCategoryActionCreator = this.callNewCategoryActionCreator.bind(this);
   }
 
   // the function that makes Category Name Input a controlled component
@@ -22,7 +23,8 @@ class Header extends Component {
     this.setState({ newCategoryName: event.target.value });
   }
 
-  callNewCategoryActionCreator() {
+  callNewCategoryActionCreator(event) {
+    event.preventDefault();
     this.props.createNewCategory(this.state.newCategoryName);
     this.setState({ newCategoryName: '' });
   }
@@ -37,16 +39,18 @@ class Header extends Component {
           </div>
   
           {/* New Project Button... TODO: create popup component for creating a new project */}
-          <div className="navbar-form navbar-left">
-            <input type="text" className="form-control" placeholder="Category name..." onChange={this.updateState} value={this.state.newCategoryName} />
-          </div>
-          <button
-            type="button"
-            className="btn btn-default navbar-btn navbar-left"
-            onClick={() => { this.callNewCategoryActionCreator(); }}
-          >
-            Create New Category
-          </button>
+          <form onSubmit={this.callNewCategoryActionCreator}>
+            <div className="navbar-form navbar-left">
+              <input type="text" className="form-control" placeholder="Category name..." onChange={this.updateState} value={this.state.newCategoryName} />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-default navbar-btn navbar-left"
+              /* onClick={() => { this.callNewCategoryActionCreator(); }} */
+            >
+              Create New Category
+            </button>
+          </form>
   
           {/* Searchbar */}
           <form className="navbar-form navbar-right">

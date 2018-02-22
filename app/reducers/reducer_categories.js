@@ -20,7 +20,7 @@ export default function (state = { byId: {}, allIds: [] }, action) {
       };
 
       // add new Category to total categories
-      state.allIds = [action.payload, ...state.allIds];
+      state.allIds = [...state.allIds, action.payload];
 
       return state;
     default:
