@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 
-import Projects from './reducer_projects';
+import Categories from './reducer_categories';
 import Boards from './reducer_boards';
 import Lists from './reducer_lists';
 import Cards from './reducer_cards';
 
 const rootReducer = combineReducers({
-  Projects,
+  Categories,
   Boards,
   Lists,
   Cards,
