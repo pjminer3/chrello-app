@@ -13,9 +13,14 @@ class Header extends Component {
     this.state = {
       newCategoryName: '',
     };
+
+    this.updateState = this.updateState.bind(this);
   }
 
-
+  updateState(event) {
+    console.log('This is updateState\'s event: ', event.target.value);
+    this.setState({ newCategoryName: event.target.value });
+  }
 
   render() {
     return (
@@ -28,7 +33,7 @@ class Header extends Component {
   
           {/* New Project Button... TODO: create popup component for creating a new project */}
           <div className="navbar-form navbar-left">
-            <input type="text" className="form-control" placeholder="Category name..." />
+            <input type="text" className="form-control" placeholder="Category name..." onChange={this.updateState} value={this.state.newCategoryName} />
           </div>
           <button
             type="button"
