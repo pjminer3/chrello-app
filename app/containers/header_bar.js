@@ -17,9 +17,14 @@ class Header extends Component {
     this.updateState = this.updateState.bind(this);
   }
 
+  // the function that makes Category Name Input a controlled component
   updateState(event) {
-    console.log('This is updateState\'s event: ', event.target.value);
     this.setState({ newCategoryName: event.target.value });
+  }
+
+  callNewCategoryActionCreator() {
+    this.props.createNewCategory(this.state.newCategoryName);
+    this.setState({ newCategoryName: '' });
   }
 
   render() {
@@ -38,6 +43,7 @@ class Header extends Component {
           <button
             type="button"
             className="btn btn-default navbar-btn navbar-left"
+            onClick={() => { this.callNewCategoryActionCreator(); }}
           >
             Create New Category
           </button>
