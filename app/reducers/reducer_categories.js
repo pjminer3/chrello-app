@@ -6,7 +6,7 @@ export default function (state = { byId: {}, allIds: [] }, action) {
   // const newState = { ...state };
 
   switch (action.type) {
-    case NEW_CATEGORY: // <-- Change to variable
+    case NEW_CATEGORY: 
       console.log('We are inside NEW_CATEOGRY');
       // edge case if its a duplicate category name
       if (state.byId[action.payload]) {
