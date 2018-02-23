@@ -29,7 +29,7 @@ class Category extends Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log('Call action creator');
-    this.setState({ newBoard: '' });
+    this.setState({ newBoard: '', show: false });
   }
 
   handleClose() {
