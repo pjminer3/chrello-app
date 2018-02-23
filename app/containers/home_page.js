@@ -1,6 +1,7 @@
 import React, { Component, Proptypes } from 'react';
 
 import HeaderBar from './header_bar';
+import Category from './category';
 
 // eslint-disable-next-line
 class HomePage extends Component {
@@ -13,7 +14,7 @@ class HomePage extends Component {
     return (
       <div>
         <HeaderBar />
-        I am at the homepage of my new app
+        <Category boardName="Personal Projects" />
       </div>
     );
   }

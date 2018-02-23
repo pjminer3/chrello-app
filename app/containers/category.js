@@ -15,15 +15,20 @@ class Category extends Component {
 
   render() {
     return (
-      <div>
-        
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <h3 className="panel-title">{this.props.boardName}</h3>
+        </div>
+        <div className="panel-body">
+          Add "Create New Board" component
+        </div>
       </div>
     );
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  bindActionCreators({ createNewBoard }, dispatch);
-};
+  return bindActionCreators({ createNewBoard }, dispatch);
+}
 
 export default connect(null, mapDispatchToProps)(Category);
