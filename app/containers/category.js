@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Modal, Button } from 'react-bootstrap';
 
 import { createNewBoard } from '../actions';
 
@@ -11,15 +12,32 @@ class Category extends Component {
     super(props);
 
     this.state = {
-      newBoardName: '',
+      newBoard: '',
+      show: false,
     };
 
-    this.newBoardSubmit = this.newBoardSubmit.bind(this);
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
   }
 
-  newBoardSubmit(event) {
+  handleNameChange(event) {
+    this.setState({ newBoard: event.target.value });
+  }
+
+  handleSubmit(event) {
     event.preventDefault();
-    console.log('New Board was clicked');
+    console.log('Call action creator');
+    this.setState({ newBoard: '' });
+  }
+
+  handleClose() {
+    this.setState({ show: false });
+  }
+
+  handleShow() {
+    this.setState({ show: true });
   }
 
   render() {
@@ -35,12 +53,21 @@ class Category extends Component {
           ----------------------------------------------------*/}
 
           {/* Create a 'New Board' Modal */}
-          <form onSubmit={this.newBoardSubmit}>
-            <div>
-              <button type="submit" className="btn btn-success btn-lg" data-toggle="modal" data-target="#newBoard">Create New Board</button>
-              <input placeholder="Enter board name..." />
-            </div>
-          </form>
+          <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>Create New Board</Button>
+
+          <Modal show={this.state.show} onHide={this.handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Create New Board</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
+              <form onSubmit={this.handleSubmit}>
+                <input placeholder="Enter board name..." value={this.state.newBoard} onChange={this.handleNameChange} />
+                <button className="btn btn-success" type="submit">Submit</button>
+              </form>
+            </Modal.Body>
+          </Modal>
+
         </div>
       </div>
     );
@@ -52,25 +79,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(null, mapDispatchToProps)(Category);
-
-//   {/* Modal */}
-//   <div id="newBoard" className="modal fade" role="dialog">
-//   <div className="modal-dialog">
-//     {/* Modal content */}
-//     <div className="modal-content">
-//       <div className="model-header">
-//         <button type="button" className="close" data-dismiss="modal">&times;</button>
-//         <h4 className="modal-title">Create New Board</h4>
-//       </div>
-//       <form onSubmit={() => console.log('Form submitted')}>
-//         <div className="modal-body">
-//           <input placeholder="Enter board name..." />
-//         </div>
-//         <div className="modal-footer">
-//           <button type="submit" className="btn btn-default" data-dismiss="modal">Submit</button>
-//         </div>
-//       </form>
-//     </div>
-
-//   </div>
-// </div>
