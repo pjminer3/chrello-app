@@ -20,7 +20,37 @@ class Category extends Component {
           <h3 className="panel-title">{this.props.boardName}</h3>
         </div>
         <div className="panel-body">
-          Add "Create New Board" component
+          {/* -------------------------- Create a way to dynamically render existing boards 
+          ----------------------------------------------------
+          ---------------------------------------------------
+          ----------------------------------------------------*/}
+
+          {/* Create a 'New Board' Modal */}
+          <button type="button" className="btn btn-success btn-lg" data-toggle="modal" data-target="#newBoard">Create New Board</button>
+
+          {/* Modal */}
+          <div id="newBoard" className="modal fade" role="dialog">
+            <div className="modal-dialog">
+              {/* Modal content */}
+              <div className="modal-content">
+                <div className="model-header">
+                  <button type="button" className="close" data-dismiss="modal">&times;</button>
+                  <h4 className="modal-title">Create New Board</h4>
+                </div>
+                <form onSubmit={() => console.log('Form submitted')}>
+                  <div className="modal-body">
+                    <input placeholder="Enter board name..." />
+                  </div>
+                  <div className="modal-footer">
+                    <button type="submit" className="btn btn-default" data-dismiss="modal">Submit</button>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+          </div>
+
+
         </div>
       </div>
     );
