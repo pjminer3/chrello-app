@@ -2,27 +2,22 @@
 import { NEW_CATEGORY } from '../actions';
 
 export default function (state = { byId: {}, allIds: [] }, action) {
-  // clone state
-  // const newState = { ...state };
+  const { payload } = action;
 
   switch (action.type) {
-    case NEW_CATEGORY: 
+    case NEW_CATEGORY:
       console.log('We are inside NEW_CATEOGRY');
       // edge case if its a duplicate category name
-      if (state.byId[action.payload]) {
+      if (state.byId[payload]) {
         return state;
       }
 
-      // add new Category byId
-      state.byId[action.payload] = {
-        id: action.payload,
-        boards: [],
-      };
-
       // add new Category to total categories
-      state.allIds = [...state.allIds, action.payload];
-
-      return state;
+      return {
+        byId: Object.assign({}, state.byId, { payload: { id: payload, boards: [] } }),
+        allIds: [...state.allIds, action.payload],
+      };
+      
     default:
       return state;
   }

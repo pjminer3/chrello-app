@@ -1,4 +1,5 @@
 import React, { Component, Proptypes } from 'react';
+import { connect } from 'react-redux';
 
 import HeaderBar from './header_bar';
 import Category from './category';
@@ -14,11 +15,16 @@ class HomePage extends Component {
     return (
       <div>
         <HeaderBar />
-        <Category boardName="Personal Projects" />
+        {this.props.categories.allIds.map(category => <Category boardName={category} />)}
+
+        {/* <Category boardName="Personal Projects" /> */}
       </div>
     );
   }
 }
 
+function mapStateToProps(state) {
+  return { categories: state.Categories };
+}
 
-export default HomePage;
+export default connect(mapStateToProps)(HomePage);
