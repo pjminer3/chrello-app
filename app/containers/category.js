@@ -28,7 +28,7 @@ class Category extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('Call action creator');
+    console.log('Call \'NEW_BOARD\' action creator');
     this.setState({ newBoard: '', show: false });
   }
 

@@ -38,7 +38,7 @@ class Header extends Component {
             <Link to="/" className="navbar-brand">Chrello</Link>
           </div>
   
-          {/* New Project Button... TODO: create popup component for creating a new project */}
+          {/* New Project Button */}
           <form onSubmit={this.callNewCategoryActionCreator}>
             <div className="navbar-form navbar-left">
               <input type="text" className="form-control" placeholder="Category name..." onChange={this.updateState} value={this.state.newCategoryName} />
@@ -46,7 +46,6 @@ class Header extends Component {
             <button
               type="submit"
               className="btn btn-default navbar-btn navbar-left"
-              /* onClick={() => { this.callNewCategoryActionCreator(); }} */
             >
               Create New Category
             </button>
