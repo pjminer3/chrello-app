@@ -1,8 +1,10 @@
 import React from 'react';
 
-const BoardIcon = (props) =>{
+const BoardIcon = (props) => {
   return (
-    <div>Board Placeholder</div>
+    <div className="col-xs-6 col-md-3">
+      <p>{props.boardName}</p>
+    </div>
   );
 };
 

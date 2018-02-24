@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
 
 import { createNewBoard } from '../actions';
+import BoardIcon from './board_icon';
 
 class Category extends Component {
   // Receives Category Name from HomePage component which connects to Redux
@@ -47,26 +48,34 @@ class Category extends Component {
           <h3 className="panel-title">{this.props.boardName}</h3>
         </div>
         <div className="panel-body">
+          <div className="row">
+            <BoardIcon boardName="board1" />
+            <BoardIcon boardName="board2" />
+            <BoardIcon boardName="board3" />
+            <BoardIcon boardName="board4" />
+
+            <Button className="col-xs-6 col-md-3" bsStyle="primary" bsSize="large" onClick={this.handleShow}>Create New Board</Button>
+
+            <Modal show={this.state.show} onHide={this.handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Create New Board</Modal.Title>
+              </Modal.Header>
+
+              <Modal.Body>
+                <form onSubmit={this.handleSubmit}>
+                  <input placeholder="Enter board name..." value={this.state.newBoard} onChange={this.handleNameChange} />
+                  <button className="btn btn-success" type="submit">Submit</button>
+                </form>
+              </Modal.Body>
+            </Modal>
+          </div>
+
           {/* -------------------------- Create a way to dynamically render existing boards 
           ----------------------------------------------------
           ---------------------------------------------------
           ----------------------------------------------------*/}
 
           {/* Create a 'New Board' Modal */}
-          <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>Create New Board</Button>
-
-          <Modal show={this.state.show} onHide={this.handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>Create New Board</Modal.Title>
-            </Modal.Header>
-
-            <Modal.Body>
-              <form onSubmit={this.handleSubmit}>
-                <input placeholder="Enter board name..." value={this.state.newBoard} onChange={this.handleNameChange} />
-                <button className="btn btn-success" type="submit">Submit</button>
-              </form>
-            </Modal.Body>
-          </Modal>
 
         </div>
       </div>
