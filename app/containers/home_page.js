@@ -1,7 +1,7 @@
 import React, { Component, Proptypes } from 'react';
 import { connect } from 'react-redux';
 
-import HeaderBar from './header_bar';
+import HeaderBar from './headers/homePage_header';
 import Category from './category';
 
 // eslint-disable-next-line

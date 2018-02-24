@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 
-import { createNewCategory } from '../actions';
+import { createNewCategory } from '../../actions';
 
 class Header extends Component {
   constructor(props) {
