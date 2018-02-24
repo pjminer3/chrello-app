@@ -10,12 +10,12 @@ const applicationState = {
       board1: {
         id: 'board1',
         project: 'proj1',
-        comments: ['comment1', 'comment2'],
+        cards: ['comment1', 'comment2'],
       },
       board2: {
         id: 'board2',
         project: 'proj1',
-        comments: ['comment3', 'comment4', 'comment5'],
+        cards: ['comment3', 'comment4', 'comment5'],
       },
     },
     allIds: ['board1', 'board2'],

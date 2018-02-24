@@ -11,10 +11,10 @@ const createNewCategory = (categoryName) => {
   };
 };
 
-const createNewBoard = (boardName, category) => {
+const createNewBoard = (boardName, categoryName) => {
   return {
     type: NEW_BOARD,
-    payload: { boardName, category },
+    payload: { boardName, categoryName },
   };
 };
 
