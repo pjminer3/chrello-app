@@ -27,9 +27,10 @@ class Category extends Component {
     this.setState({ newBoard: event.target.value });
   }
 
+  // this calls the action creator with boardName and category id
   handleSubmit(event) {
     event.preventDefault();
-    console.log('Call \'NEW_BOARD\' action creator');
+    this.props.createNewBoard(this.state.newBoard, this.props.categoryName);
     this.setState({ newBoard: '', show: false });
   }
 
@@ -45,7 +46,7 @@ class Category extends Component {
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
-          <h3 className="panel-title">{this.props.boardName}</h3>
+          <h3 className="panel-title">{this.props.categoryName}</h3>
         </div>
         <div className="panel-body">
           <div className="row">

@@ -15,7 +15,7 @@ class HomePage extends Component {
     return (
       <div>
         <HeaderBar />
-        {this.props.categories.allIds.map(category => <Category key={category} boardName={category} />)}
+        {this.props.categories.allIds.map(category => <Category key={category} categoryName={category} />)}
 
         {/* <Category boardName="Personal Projects" /> */}
       </div>

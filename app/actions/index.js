@@ -5,18 +5,16 @@ const NEW_CATEGORY = 'NEW_CATEGORY';
 const NEW_BOARD = 'NEW_BOARD';
 
 const createNewCategory = (categoryName) => {
-  console.log('This is New Category name: ', categoryName);
   return {
     type: NEW_CATEGORY,
     payload: categoryName,
   };
 };
 
-const createNewBoard = (boardName) => {
-  console.log('This is New Board Name: ', boardName);
+const createNewBoard = (boardName, category) => {
   return {
     type: NEW_BOARD,
-    payload: boardName,
+    payload: { boardName, category },
   };
 };
 
