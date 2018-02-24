@@ -7,7 +7,8 @@ export default function (state = { byId: { 'Personal Boards': { id: 'Personal Bo
 
   switch (action.type) {
     case NEW_CATEGORY:
-      console.log('We are inside NEW_CATEOGRY');
+      // payload = categoryName  
+
       // edge case if its a duplicate category name
       if (state.byId[payload]) {
         return state;

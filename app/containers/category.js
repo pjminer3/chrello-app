@@ -50,10 +50,7 @@ class Category extends Component {
         </div>
         <div className="panel-body">
           <div className="row">
-            <BoardIcon boardName="board1" />
-            <BoardIcon boardName="board2" />
-            <BoardIcon boardName="board3" />
-            <BoardIcon boardName="board4" />
+            {this.props.boards.map( boardName => <BoardIcon boardName={boardName} key={boardName} />) }
 
             <Button className="col-xs-6 col-md-3" bsStyle="primary" bsSize="large" onClick={this.handleShow}>Create New Board</Button>
 
@@ -70,18 +67,14 @@ class Category extends Component {
               </Modal.Body>
             </Modal>
           </div>
-
-          {/* -------------------------- Create a way to dynamically render existing boards 
-          ----------------------------------------------------
-          ---------------------------------------------------
-          ----------------------------------------------------*/}
-
-          {/* Create a 'New Board' Modal */}
-
         </div>
       </div>
     );
   }
+}
+
+function mapStateToProps(state) {
+  return { boards: state.Boards };
 }
 
 function mapDispatchToProps(dispatch) {
