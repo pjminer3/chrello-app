@@ -27,12 +27,12 @@ const createNewList = (listName, boardName) => {
   };
 };
 
-CONST setActiveBoard = (boardName) => {
+const setActiveBoard = (boardName) => {
   return {
     type: SET_ACTIVE_BOARD,
     payload: boardName,
-  }
-}
+  };
+};
 
 
 // ------------------- END OF ACTION CREATORS

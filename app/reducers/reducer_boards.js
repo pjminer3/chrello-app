@@ -1,10 +1,12 @@
 // this reducer will control board state and will have mulitple cases to catch different types of actions
 
+import { NEW_BOARD } from '../actions';
+
 export default function (state = { byId: {}, allIds: [] }, action) {
   const { payload } = action;
 
   switch (action.type) {
-    case 'NEW_BOARD':
+    case NEW_BOARD:
       // PAYLOAD = { boadName, categoryName }
       console.log('We are inside NEW_BOARD reducer');
       // edge case if its a duplicate board name
