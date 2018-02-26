@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { setActiveBoard } from '../actions';
+
 const BoardIcon = (props) => {
   const boardStyles = {
     border: 'solid',
