@@ -49,7 +49,7 @@ class Category extends Component {
           <h3 className="panel-title">{this.props.categoryName}</h3>
         </div>
         <div className="panel-body">
-          <div className="row">
+          <div className="row boardContainer">
             {this.props.boards.map( boardName => <BoardIcon categoryName={this.props.categoryName} boardName={boardName} key={boardName} />) }
 
             <Button className="col-xs-6 col-md-3" bsStyle="primary" bsSize="large" onClick={this.handleShow}>Create New Board</Button>

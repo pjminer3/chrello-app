@@ -1,0 +1,16 @@
+.boardContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.newBoardButton {
+  display: flex;
+  justify-self: flex-end;
+}
+
+.boardIcon {
+  display: flex;
+  justify-self: flex-end;
+}

@@ -1,7 +1,7 @@
 import React, { Component, Proptypes } from 'react';
 import { connect } from 'react-redux';
 
-import HeaderBar from './headers/homePage_header';
+import HeaderBar from './header';
 import Category from './category';
 
 // eslint-disable-next-line
@@ -14,7 +14,7 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <HeaderBar />
+        <HeaderBar type="HomePage" />
         {this.props.categories.allIds.map(category => <Category key={category} categoryName={category} boards={this.props.categories.byId[category].boards} />)}
 
         {/* <Category boardName="Personal Projects" /> */}
