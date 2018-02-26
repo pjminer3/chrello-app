@@ -45,7 +45,7 @@ class Header extends Component {
           </div>
   
           {/* New Project Button */}
-          <form onSubmit={this.callNewCategoryActionCreator}>
+          <form onSubmit={ this.props.type === 'HomePage' ? this.callNewCategoryActionCreator : 'this.callNewListActionCreator'}>
             <div className="navbar-form navbar-left">
               <input type="text" className="form-control" placeholder="Category name..." onChange={this.updateState} value={this.state.newCategoryName} />
             </div>
@@ -53,7 +53,7 @@ class Header extends Component {
               type="submit"
               className="btn btn-default navbar-btn navbar-left"
             >
-              Create New Category
+              {this.props.type === 'HomePage' ? 'Create New Category' : 'Create New List'}
             </button>
           </form>
   
