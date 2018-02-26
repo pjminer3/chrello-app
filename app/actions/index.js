@@ -3,6 +3,7 @@
 
 const NEW_CATEGORY = 'NEW_CATEGORY';
 const NEW_BOARD = 'NEW_BOARD';
+const NEW_LIST = 'NEW_LIST';
 
 const createNewCategory = (categoryName) => {
   return {
@@ -18,6 +19,13 @@ const createNewBoard = (boardName, categoryName) => {
   };
 };
 
+const createNewList = (listName, boardName) => {
+  return {
+    type: NEW_BOARD,
+    payload: { listName, boardName },
+  };
+};
+
 
 // ------------------- END OF ACTION CREATORS
 
@@ -26,4 +34,6 @@ module.exports = {
   NEW_CATEGORY,
   createNewBoard,
   NEW_BOARD,
+  NEW_LIST,
+  createNewList,
 };
