@@ -10,7 +10,7 @@ const BoardIcon = (props) => {
   const boardPage = `/${props.categoryName}/${props.boardName}`;
 
   return (
-    <Link to={boardPage} >
+    <Link to={boardPage}>
       <div className="col-xs-6 col-md-3" style={boardStyles}>
         <p style={{ color: 'red' }}>{props.boardName}</p>
       </div>

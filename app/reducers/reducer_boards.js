@@ -14,7 +14,7 @@ export default function (state = { byId: {}, allIds: [] }, action) {
 
       // add board to boards application state
       return {
-        byId: Object.assign({}, state.byId, { [payload.boardName]: { id: payload.boardName, category: payload.categoryName, cards: [] } }),
+        byId: Object.assign({}, state.byId, { [payload.boardName]: { id: payload.boardName, category: payload.categoryName, lists: [] } }),
         allIds: [...state.allIds, payload.boardName],
       };
     default:

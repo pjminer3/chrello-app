@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 
-import { createNewCategory } from '../actions';
+import { createNewCategory, createNewList } from '../actions';
 
 class Header extends Component {
   constructor(props) {
@@ -29,11 +29,12 @@ class Header extends Component {
     this.setState({ newCategoryName: '' });
   }
 
-  // createNewCategory() {
-  //   return (
-      
-  //   )
-  // }
+  callNewListActionCreator(event) {
+    event.preventDefault();
+    this.props.createNewList(this.state.newCategoryName);
+    this.setState({ newCategoryName: '' });
+  }
+
 
   render() {
     return (
@@ -72,7 +73,7 @@ class Header extends Component {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createNewCategory }, dispatch);
+  return bindActionCreators({ createNewCategory, createNewList }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(Header);

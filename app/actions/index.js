@@ -4,6 +4,7 @@
 const NEW_CATEGORY = 'NEW_CATEGORY';
 const NEW_BOARD = 'NEW_BOARD';
 const NEW_LIST = 'NEW_LIST';
+const SET_ACTIVE_BOARD = 'SET_ACTIVE_BOARD';
 
 const createNewCategory = (categoryName) => {
   return {
@@ -26,6 +27,13 @@ const createNewList = (listName, boardName) => {
   };
 };
 
+CONST setActiveBoard = (boardName) => {
+  return {
+    type: SET_ACTIVE_BOARD,
+    payload: boardName,
+  }
+}
+
 
 // ------------------- END OF ACTION CREATORS
 
@@ -36,4 +44,6 @@ module.exports = {
   NEW_BOARD,
   NEW_LIST,
   createNewList,
+  SET_ACTIVE_BOARD,
+  setActiveBoard,
 };
