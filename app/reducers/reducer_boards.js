@@ -8,7 +8,7 @@ export default function (state = { byId: {}, allIds: [] }, action) {
   switch (action.type) {
     case NEW_BOARD:
       // PAYLOAD = { boadName, categoryName }
-      console.log('We are inside NEW_BOARD reducer');
+
       // edge case if its a duplicate board name
       if (state.byId[payload.boardName]) {
         return state;
@@ -17,7 +17,7 @@ export default function (state = { byId: {}, allIds: [] }, action) {
       // add board to boards application state
       return {
         byId: Object.assign({}, state.byId, { [payload.boardName]: { id: payload.boardName, category: payload.categoryName, lists: [] } }),
-        allIds: [...state.allIds, payload.boardName],
+        allIds: [payload.boardName, ...state.allIds],
       };
     default:
       return state;

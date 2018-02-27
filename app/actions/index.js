@@ -28,6 +28,7 @@ const createNewList = (listName, boardName) => {
 };
 
 const setActiveBoard = (boardName) => {
+  console.log('SetActiveBoard called')
   return {
     type: SET_ACTIVE_BOARD,
     payload: boardName,
@@ -42,8 +43,8 @@ module.exports = {
   NEW_CATEGORY,
   createNewBoard,
   NEW_BOARD,
-  NEW_LIST,
   createNewList,
-  SET_ACTIVE_BOARD,
+  NEW_LIST,
   setActiveBoard,
+  SET_ACTIVE_BOARD,
 };
