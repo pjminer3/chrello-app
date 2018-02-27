@@ -5,19 +5,23 @@ import Header from './header';
 
 // eslint-disable-next-line
 class BoardPage extends Component {
+  // eslint-disable-next-line
   constructor(props) {
     super(props);
+
+    console.log('Pathname: ', this.props.location.pathname);
+
   }
-  
+
   render() {
     return (
       <div>
         <Header />
         <div>{this.props.activeBoard}</div>
       </div>
-    )
+    );
   }
-};
+}
 
 function mapStateToProps(state) {
   return { activeBoard: state.ActiveBoard };
