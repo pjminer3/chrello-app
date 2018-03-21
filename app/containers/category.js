@@ -23,6 +23,12 @@ class Category extends Component {
     this.handleNameChange = this.handleNameChange.bind(this);
   }
 
+  componentDidMount() {
+    console.log('**Inside CATEGORY componentDidMount**');
+    // get categories from localstorage (an array)
+    // 
+  }
+
   handleNameChange(event) {
     this.setState({ newBoard: event.target.value });
   }

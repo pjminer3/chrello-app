@@ -8,11 +8,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import HomePage from './containers/home_page';
 import BoardPage from './containers/board_page';
 import reducers from './reducers/index';
+import initialState from './application_state';
 
-const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+const store = createStore(reducers, initialState, applyMiddleware(ReduxPromise));
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={store}>
     <Router >
       <div>
         <Route path="/:category/:board" component={BoardPage} />

@@ -11,6 +11,12 @@ class HomePage extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    console.log('**Inside HOMEPAGE componentDidMount**');
+    // get categories from local server
+    // set categories to ReduxState
+  }
+
   render() {
     return (
       <div>

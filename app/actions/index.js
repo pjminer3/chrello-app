@@ -28,7 +28,7 @@ const createNewList = (listName, boardName) => {
 };
 
 const setActiveBoard = (boardName) => {
-  console.log('SetActiveBoard called')
+  console.log('SetActiveBoard called');
   return {
     type: SET_ACTIVE_BOARD,
     payload: boardName,
