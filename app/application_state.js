@@ -23,7 +23,7 @@ const applicationState = {
       Danny: {
         id: 'Danny',
         category: 'TMs',
-        lists: ['list1', 'list2'],
+        lists: ['Chrello Board', 'Toy Problems'],
       },
       Kirk: {
         id: 'Kirk',
@@ -35,13 +35,13 @@ const applicationState = {
   },
   Lists: {
     byId: {
-      list1: {
-        id: 'list1',
+      'Chrello Board': {
+        id: 'Chrello Board',
         board: 'Danny',
         cards: ['card1', 'card2'],
       },
-      list2: {
-        id: 'list2',
+      'Toy Problems': {
+        id: 'Toy Problems',
         board: 'Danny',
         cards: ['card3'],
       },
