@@ -14,3 +14,9 @@
   display: flex;
   justify-self: flex-end;
 } */
+
+.list-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

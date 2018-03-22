@@ -8,7 +8,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import HomePage from './containers/home_page';
 import BoardPage from './containers/board_page';
 import reducers from './reducers/index';
+
+// initial state for dev purposes only
 import initialState from './application_state';
+
+// css
+import './public/assets/stylesheet.css';
 
 const store = createStore(reducers, initialState, applyMiddleware(ReduxPromise));
 
