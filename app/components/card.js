@@ -2,7 +2,7 @@ import React from 'react';
 
 const Card = (props) => {
   return (
-    <div>{`This is my card: ${props.cardId}`}</div>
+    <div className="card">{`This is my card: ${props.cardId}`}</div>
   );
 };
 

@@ -1,22 +1,26 @@
-/* .boardContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-}
 
-.newBoardButton {
-  display: flex;
-  justify-self: flex-end;
-}
-
-.boardIcon {
-  display: flex;
-  justify-self: flex-end;
-} */
+/* ---------- LISTS ---------- */
 
 .list-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
+}
+
+.list-element {
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  min-width: 150px;
+  border: 2px solid grey;
+  margin: 0px 20px;
+}
+
+
+/* ---------- CARDS ---------- */
+
+.card {
+  border: 1px solid black;
+  margin: 5px;
+  padding: 5px 10px;
 }
