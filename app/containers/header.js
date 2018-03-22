@@ -45,7 +45,7 @@ class Header extends Component {
             <Link to="/" className="navbar-brand">Chrello</Link>
           </div>
   
-          {/* New Project Button */}
+          {/* New Category/List Button */}
           <form onSubmit={ this.props.type === 'HomePage' ? this.callNewCategoryActionCreator : () => 'this.callNewListActionCreator'}>
             <div className="navbar-form navbar-left">
               <input type="text" className="form-control" placeholder={this.props.type === 'HomePage' ? 'Category name...' : 'List name...'} onChange={this.updateState} value={this.state.newCategoryName} />

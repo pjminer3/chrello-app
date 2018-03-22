@@ -22,7 +22,7 @@ const createNewBoard = (boardName, categoryName) => {
 
 const createNewList = (listName, boardName) => {
   return {
-    type: NEW_BOARD,
+    type: NEW_LIST,
     payload: { listName, boardName },
   };
 };
