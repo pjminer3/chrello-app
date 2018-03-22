@@ -15,9 +15,8 @@ class HomePage extends Component {
     return (
       <div>
         <HeaderBar type="HomePage" />
+        {/* Renders each category in Redux State */}
         {this.props.categories.allIds.map(category => <Category key={category} categoryName={category} boards={this.props.categories.byId[category].boards} />)}
-
-        {/* <Category boardName="Personal Projects" /> */}
       </div>
     );
   }
