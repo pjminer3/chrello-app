@@ -16,6 +16,7 @@ class Header extends Component {
 
     this.updateState = this.updateState.bind(this);
     this.callNewCategoryActionCreator = this.callNewCategoryActionCreator.bind(this);
+    this.callNewListActionCreator = this.callNewListActionCreator.bind(this);
   }
 
   // the function that makes Category Name Input a controlled component
@@ -46,7 +47,7 @@ class Header extends Component {
           </div>
   
           {/* New Category/List Button */}
-          <form onSubmit={ this.props.type === 'HomePage' ? this.callNewCategoryActionCreator : () => 'this.callNewListActionCreator'}>
+          <form onSubmit={ this.props.type === 'HomePage' ? this.callNewCategoryActionCreator : this.callNewListActionCreator}>
             <div className="navbar-form navbar-left">
               <input type="text" className="form-control" placeholder={this.props.type === 'HomePage' ? 'Category name...' : 'List name...'} onChange={this.updateState} value={this.state.newCategoryName} />
             </div>
