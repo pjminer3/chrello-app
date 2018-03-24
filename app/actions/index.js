@@ -28,11 +28,11 @@ const createNewList = (listName, boardName) => {
   };
 };
 
-const createNewCard = (cardName, listName) => {
+const createNewCard = (cardContent, listName) => {
   console.log('Card created');
   return {
     type: NEW_CARD,
-    payload: { cardName, listName },
+    payload: { cardContent, listName },
   };
 };
 

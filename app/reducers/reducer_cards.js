@@ -1,10 +1,13 @@
-// this reducer will control board state and will have mulitple cases to catch different types of actions
+// this reducer will control card state
+import { NEW_CARD } from '../actions';
 
 export default function (state = { byId: {}, allIds: [] }, action) {
-  
-  switch (action.type) {
-    case 'EXAMPLE CASE':
-      return [...state, action.payload];
+  const { type, payload } = action;
+
+  switch (type) {
+    case NEW_CARD:
+      // add new card by ID to 
+      return [...state, payload];
     default:
       return state;
   }
