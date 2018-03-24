@@ -48,24 +48,6 @@ const applicationState = {
     },
     allIds: ['list1', 'list2'],
   },
-  Cards: {
-    byId: {
-      card1: {
-        id: 'card1',
-        content: '1 This is my content',
-      },
-      card2: {
-        id: 'card2',
-        content: '2 This is my content',
-      },
-      card3: {
-        id: 'card3',
-        content: '3 This is my content',
-      },
-    },
-    allIds: ['card1', 'card2', 'card3'],
-  },
-
 };
 
 export default applicationState;

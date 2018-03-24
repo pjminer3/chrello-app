@@ -47,11 +47,17 @@ class Header extends Component {
           <div className="navbar-header">
             <Link to="/" className="navbar-brand">Chrello</Link>
           </div>
-  
+
           {/* New Category/List Button */}
           <form onSubmit={ this.props.type === 'HomePage' ? this.callNewCategoryActionCreator : this.callNewListActionCreator}>
             <div className="navbar-form navbar-left">
-              <input type="text" className="form-control" placeholder={this.props.type === 'HomePage' ? 'Category name...' : 'List name...'} onChange={this.updateState} value={this.state.newCategoryName} />
+              <input
+                type="text"
+                className="form-control"
+                placeholder={this.props.type === 'HomePage' ? 'Category name...' : 'List name...'}
+                onChange={this.updateState}
+                value={this.state.newCategoryName}
+              />
             </div>
             <button
               type="submit"
@@ -60,15 +66,7 @@ class Header extends Component {
               {this.props.type === 'HomePage' ? 'Create New Category' : 'Create New List'}
             </button>
           </form>
-  
-          {/* Searchbar */}
-          <form className="navbar-form navbar-right">
-            <div className="form-group">
-              <input type="text" className="form-control" placeholder="Search Boards..." />
-              {/* TODO: Eventually have auto-rendering dropdown list of Projects with what's typed..
-              onChange */}
-            </div>
-          </form>
+
         </div>
       </nav>
     );

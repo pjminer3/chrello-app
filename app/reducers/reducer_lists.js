@@ -39,13 +39,11 @@ export default function (state = { byId: {}, allIds: [] }, action) {
 
       // add card to end of newState.byId[listName].cards
       cards = newState.byId[payload.listName].cards;
-
       newState.byId[payload.listName].cards = [payload.cardContent, ...cards];
+
       return newState;
 
     default:
       return state;
   }
 }
-
-// TODO: CREATE THIS REDUCER 
