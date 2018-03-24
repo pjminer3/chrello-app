@@ -9,6 +9,10 @@ class List extends Component {
     this.state = {};
   }
 
+  createCard(event) {
+    return event;
+  }
+
   render() {
     return (
       <div className="list-element">
