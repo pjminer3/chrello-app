@@ -1,4 +1,4 @@
-// this reducer will control board state and will have mulitple cases to catch different types of actions
+// this reducer controls board state and has mulitple cases to catch different types of actions
 
 import { NEW_BOARD, NEW_LIST } from '../actions';
 
@@ -11,7 +11,7 @@ export default function (state = { byId: {}, allIds: [] }, action) {
     case NEW_BOARD:
       // payload = { boadName, categoryName }
 
-      // edge case if its a duplicate board name
+      // edge case: duplicate boardName
       if (state.byId[payload.boardName]) {
         return state;
       }
@@ -31,7 +31,7 @@ export default function (state = { byId: {}, allIds: [] }, action) {
     case NEW_LIST:
       // payload = { listName, boardName }
 
-      // edge case: it's a duplicate listName
+      // edge case: duplicate listName
       if (state.byId[payload.boardName].lists.indexOf(payload.listName) >= 0) {
         return state;
       }
@@ -49,5 +49,3 @@ export default function (state = { byId: {}, allIds: [] }, action) {
       return state;
   }
 }
-
-// TODO: CREATE THIS REDUCER 

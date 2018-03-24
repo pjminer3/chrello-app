@@ -1,16 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Card from './card';
 
-const List = (props) => {
-  return (
-    <div className="list-element">
-      <div className="list-name">{props.listId}</div>
-      <div className="cards">
-        {props.list.cards.map(card => <Card cardId={card} key={card} />)}
+class List extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <div className="list-element">
+        <div className="list-name">{this.props.listId}</div>
+        <div className="cards">
+          {/* existing cards */}
+          {this.props.list.cards.map(card => <Card cardId={card} key={card} />)}
+
+          {/* new card */}
+          <form>
+            <input type="text" placeholder="Add new card" />
+          </form>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default List;
