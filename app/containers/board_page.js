@@ -19,7 +19,7 @@ class BoardPage extends Component {
       <div>
         <Header activeBoard={this.props.activeBoard} />
         <div>{`This is board ${this.props.activeBoard}`}</div>
-        <div className="list-container">
+        <div className="lists-container">
           {this.props.listIds.map(listId => <List listId={listId} list={this.props.listItems[listId]} key={listId} />)}
         </div>
       </div>

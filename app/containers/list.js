@@ -19,15 +19,8 @@ class List extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('We create new card: ', this.state.cardValue);
-    // call new card action creator
     this.props.createNewCard(this.state.cardValue, this.props.listId);
     this.setState({ cardValue: '' });
-
-    // add the card to the beginning of the proper list's cards array of List redux store
-    // create the Card in redux store
-      // add the card byId
-      // add the card to the allIds array
   }
 
   handleChange(event) {
@@ -40,13 +33,13 @@ class List extends Component {
         <div className="list-name">{this.props.listId}</div>
         <div className="cards">
           {/* existing cards */}
-          {this.props.list.cards.map(card => <Card cardId={card} key={card} />)}
+          {this.props.list.cards.map((card, idx) => <Card cardId={card} key={idx} />)}
 
-          {/* new card */}
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" placeholder="Add new card" value={this.state.cardValue} onChange={this.handleChange} />
-          </form>
         </div>
+        {/* new card */}
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" placeholder="Add new card" value={this.state.cardValue} onChange={this.handleChange} />
+        </form>
       </div>
     );
   }

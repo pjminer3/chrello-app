@@ -1,19 +1,24 @@
 
 /* ---------- LISTS ---------- */
 
-.list-container {
+.lists-container {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .list-element {
   display: flex;
   flex-direction: column;
   min-height: 300px;
-  min-width: 150px;
+  min-width: 250px;
   border: 2px solid grey;
-  margin: 0px 20px;
+  margin: 0px 10px 20px 10px;
+}
+
+.list-element form {
+  align-self: center;
 }
 
 
@@ -24,3 +29,4 @@
   margin: 5px;
   padding: 5px 10px;
 }
+
