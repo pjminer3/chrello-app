@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import Card from './card';
+import Card from '../components/card';
+import { createNewCard } from '../actions';
 
 class List extends Component {
   constructor(props) {
@@ -18,6 +21,7 @@ class List extends Component {
     event.preventDefault();
     console.log('We create new card: ', this.state.cardValue);
     // call new card action creator
+    this.props.createNewCard(this.state.cardValue, this.props.listId);
     this.setState({ cardValue: '' });
 
     // add the card to the beginning of the proper list's cards array of List redux store
@@ -48,4 +52,8 @@ class List extends Component {
   }
 }
 
-export default List;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ createNewCard }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(List);

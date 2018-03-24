@@ -4,6 +4,7 @@
 const NEW_CATEGORY = 'NEW_CATEGORY';
 const NEW_BOARD = 'NEW_BOARD';
 const NEW_LIST = 'NEW_LIST';
+const NEW_CARD = 'NEW_CARD';
 const SET_ACTIVE_BOARD = 'SET_ACTIVE_BOARD';
 
 const createNewCategory = (categoryName) => {
@@ -27,8 +28,15 @@ const createNewList = (listName, boardName) => {
   };
 };
 
+const createNewCard = (cardName, listName) => {
+  console.log('Card created');
+  return {
+    type: NEW_CARD,
+    payload: { cardName, listName },
+  };
+};
+
 const setActiveBoard = (boardName) => {
-  console.log('SetActiveBoard called');
   return {
     type: SET_ACTIVE_BOARD,
     payload: boardName,
@@ -45,6 +53,8 @@ module.exports = {
   NEW_BOARD,
   createNewList,
   NEW_LIST,
+  createNewCard,
+  NEW_CARD,
   setActiveBoard,
   SET_ACTIVE_BOARD,
 };

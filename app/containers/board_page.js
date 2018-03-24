@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Header from './header';
-import List from '../components/list';
+import List from './list';
 
 // eslint-disable-next-line
 class BoardPage extends Component {
