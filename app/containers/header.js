@@ -19,20 +19,22 @@ class Header extends Component {
     this.callNewListActionCreator = this.callNewListActionCreator.bind(this);
   }
 
-  // the function that makes Category Name Input a controlled component
+  // Makes Category Name Input a controlled component
   updateState(event) {
     this.setState({ newCategoryName: event.target.value });
   }
 
+  // Creates a new Category on home page and resets input value
   callNewCategoryActionCreator(event) {
     event.preventDefault();
     this.props.createNewCategory(this.state.newCategoryName);
     this.setState({ newCategoryName: '' });
   }
 
+  // Creates a new List on board page and resets input value
   callNewListActionCreator(event) {
     event.preventDefault();
-    this.props.createNewList(this.state.newCategoryName);
+    this.props.createNewList(this.state.newCategoryName, this.props.activeBoard);
     this.setState({ newCategoryName: '' });
   }
 

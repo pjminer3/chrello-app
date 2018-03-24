@@ -3,6 +3,7 @@ import { NEW_LIST } from '../actions';
 
 export default function (state = { byId: {}, allIds: [] }, action) {
   const { type, payload } = action;
+
   switch (type) {
     case NEW_LIST:
       // payload: { listName: listName, boardName: boardName }
