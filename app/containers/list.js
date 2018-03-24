@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Card from '../components/card';
-import { createNewCard } from '../actions';
+import { createNewCard, deleteCard } from '../actions';
 
 class List extends Component {
   constructor(props) {
@@ -33,8 +33,17 @@ class List extends Component {
         <div className="list-name">{this.props.listId}</div>
         <div className="cards">
           {/* existing cards */}
-          {this.props.list.cards.map((card, idx) => <Card cardId={card} key={idx} />)}
-
+          {this.props.list.cards.map((card, idx) => {
+            return (
+              <Card
+                cardContent={card}
+                deleteCard={this.props.deleteCard}
+                key={`${idx}-${card}`}
+                index={idx}
+                listId={this.props.listId}
+              />
+            );
+          })}
         </div>
         {/* new card */}
         <form onSubmit={this.handleSubmit}>
@@ -46,7 +55,7 @@ class List extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createNewCard }, dispatch);
+  return bindActionCreators({ createNewCard, deleteCard }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(List);
