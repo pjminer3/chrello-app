@@ -44,13 +44,15 @@ class Category extends Component {
 
   render() {
     return (
-      <div className="panel panel-default">
+      <div className="panel panel-default category">
         <div className="panel-heading">
           <h3 className="panel-title">{this.props.categoryName}</h3>
         </div>
         <div className="panel-body">
-          <div className="row boardContainer">
-            {this.props.boards.map( boardName => <BoardIcon categoryName={this.props.categoryName} boardName={boardName} key={boardName} />) }
+          <div className="row">
+            <div className="board-container">
+              {this.props.boards.map( boardName => <BoardIcon categoryName={this.props.categoryName} boardName={boardName} key={boardName} />) }
+            </div>
 
             <Button className="col-xs-6 col-md-3" bsStyle="primary" bsSize="large" onClick={this.handleShow}>Create New Board</Button>
 

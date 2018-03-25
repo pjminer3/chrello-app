@@ -1,3 +1,25 @@
+/* ---------- BOARD ICON ---------- */
+.board-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.board-icon {
+  min-height: 100px;
+  min-width: 250px;
+  border: 1px solid grey;
+  margin: 10px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+
+.board-icon-title {
+  margin-top: 10px;
+  margin-left: 10px;
+  color: red;
+  font-family: 'Concert One', sans-serif;
+}
 
 /* ---------- LISTS ---------- */
 
@@ -30,3 +52,28 @@
   padding: 5px 10px;
 }
 
+
+/* ---------- CATEGORY ---------- */
+
+.category-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.category {
+  width: 95%;
+}
+
+/* ---------- NAV BAR ---------- */
+
+.navbar-brand {
+  font-family: 'Concert One', sans-serif;
+  height: 65px;
+  display: flex;
+  align-items: center;
+}
+
+#chrello {
+  font-size: 50px;
+}

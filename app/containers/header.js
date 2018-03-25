@@ -45,7 +45,7 @@ class Header extends Component {
         <div className="container-fluid">
           {/* The brand name Chrello re-direct to homepage */}
           <div className="navbar-header">
-            <Link to="/" className="navbar-brand">Chrello</Link>
+            <Link to="/" className="navbar-brand" id="chrello">Chrello</Link>
           </div>
 
           {/* New Category/List Button */}

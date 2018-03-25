@@ -16,8 +16,8 @@ const BoardIcon = (props) => {
   return (
     // eslint-disable-next-line
     <Link to={boardPage} onMouseOver={() => { props.setActiveBoard(props.boardName); }}>
-      <div className="col-xs-6 col-md-3" style={boardStyles}>
-        <p style={{ color: 'red' }}>{props.boardName}</p>
+      <div className="board-icon">
+        <p className="board-icon-title">{props.boardName}</p>
       </div>
     </Link>
   );
