@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/pjminer3/chrello-app#readme",
   "dependencies": {
-    "express": "^4.16.2",
+    "express": "^4.16.3",
+    "mysql": "^2.15.0",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
@@ -34,7 +35,8 @@
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-form": "^7.2.3",
-    "redux-promise": "^0.5.3"
+    "redux-promise": "^0.5.3",
+    "sequelize": "^4.37.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
