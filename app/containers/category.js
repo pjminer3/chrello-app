@@ -46,7 +46,11 @@ class Category extends Component {
     return (
       <div className="panel panel-default category">
         <div className="panel-heading">
-          <h3 className="panel-title">{this.props.categoryName}</h3>
+          <h3 className="panel-title" id="panel-title">{this.props.categoryName}</h3>
+          {/* close button */}
+          <button type="button" className="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         <div className="panel-body">
           <div className="row">

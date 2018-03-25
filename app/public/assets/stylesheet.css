@@ -83,6 +83,15 @@
   margin-left: 10px;
 }
 
+#panel-title {
+  width: 50%;
+}
+
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+}
+
 
 /* ---------- NAV BAR ---------- */
 

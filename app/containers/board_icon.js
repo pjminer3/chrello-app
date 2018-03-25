@@ -6,10 +6,6 @@ import { bindActionCreators } from 'redux';
 import { setActiveBoard } from '../actions';
 
 const BoardIcon = (props) => {
-  const boardStyles = {
-    border: 'solid',
-    borderColor: 'grey',
-  };
 
   const boardPage = `/${props.categoryName}/${props.boardName}`;
 
