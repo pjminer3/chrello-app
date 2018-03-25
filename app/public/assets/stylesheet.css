@@ -69,33 +69,34 @@ body {
   flex-direction: column;
   min-height: 300px;
   min-width: 250px;
-  border: 2px solid grey;
   margin: 0px 10px 20px 10px;
-  background: lightblue;
+  background: rgb(225, 225, 225);
   border-radius: 5px;
-}
-
-.list-name {
-  align-self: center;
-  font-size: 20px;
-  margin: 5px;
-  border: 1px solid white;
-  padding: 5px 40px;
-  border-radius: 10px;
-  background: white;
 }
 
 .list-element form {
   align-self: center;
 }
 
+.list-name {
+  align-self: flex-start;
+  font-size: 20px;
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-top: 5px;
+  background: rgb(225, 225, 225);
+}
+
+
 
 /* ---------- CARDS ---------- */
 
 .card {
-  border: 1px solid black;
+
   margin: 5px;
   padding: 5px 10px;
+  border-radius: 5px;
+  background: rgb(249, 249, 251);
 }
 
 
