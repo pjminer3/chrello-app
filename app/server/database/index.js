@@ -1,6 +1,6 @@
 import mysql from 'mysql';
 
-console.log('****************INSIDE DB.INDEX ********************');
+
 // create connection with local database
 const dbConnection = mysql.createConnection({
   host: 'localhost',

@@ -1,6 +1,6 @@
 import path from 'path';
 import express from 'express';
-// import db from '../database/index';
+import db from './database/index';
 
 const app = express();
 

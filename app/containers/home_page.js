@@ -13,7 +13,7 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div>
+      <div id="#body">
         <HeaderBar type="HomePage" />
         <div className="category-container">
           {/* Renders each category in Redux State */}
