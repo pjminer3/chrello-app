@@ -54,7 +54,14 @@ class Category extends Component {
               {this.props.boards.map( boardName => <BoardIcon categoryName={this.props.categoryName} boardName={boardName} key={boardName} />) }
             </div>
 
-            <Button className="col-xs-6 col-md-3" bsStyle="primary" bsSize="large" onClick={this.handleShow}>Create New Board</Button>
+            <Button
+              className="col-xs-6 col-md-3"
+              bsStyle="primary" bsSize="large"
+              onClick={this.handleShow}
+              id="new-board-button"
+            >
+              Create New Board
+            </Button>
 
             <Modal show={this.state.show} onHide={this.handleClose}>
               <Modal.Header closeButton>
