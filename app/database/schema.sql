@@ -3,39 +3,36 @@ CREATE DATABASE chrello;
 
 USE chrello; 
 
-CREATE TABLE categories (
+CREATE TABLE category (
   id INTEGER AUTO_INCREMENT,
-  category_name CHAR(150) NOT NULL,
+  category_name VARCHAR(30) NOT NULL,
   PRIMARY KEY (id)
-  -- eventually add id_Users
 );
 
-CREATE TABLE boards (
+CREATE TABLE board (
   id INTEGER AUTO_INCREMENT,
-  board_name CHAR(150) NOT NULL,
-  id_CATEGORIES INTEGER NOT NULL,
-  PRIMARY KEY (id),
-  -- add id_categories as foreign key
+  board_name VARCHAR(30) NOT NULL,
+  id_CATEGORY INTEGER NOT NULL,
+  PRIMARY KEY (id)
 );
 
-CREATE TABLE lists (
+CREATE TABLE list (
   id INTEGER AUTO_INCREMENT,
-  list_name CHAR(150) NOT NULL,
-  id_BOARDS INTEGER NOT NULL,
-  PRIMARY KEY (id),
-  -- add id_boards as foreign key
+  list_name VARCHAR(30) NOT NULL,
+  id_BOARD INTEGER NOT NULL,
+  PRIMARY KEY (id)
 );
 
-CREATE TABLE cards (
+CREATE TABLE card (
   id INTEGER AUTO_INCREMENT,
-  card_content CHAR(225) NOT NULL,
-  id_LISTS INTEGER NOT NULL,
-  PRIMARY KEY (id),
-  -- add id_lists as foreign key
+  card_content VARCHAR(225) NOT NULL,
+  id_LIST INTEGER NOT NULL,
+  PRIMARY KEY (id)
 );
 
-ALTER TABLE boards ADD FOREIGN KEY (id_CATEGORIES) REFERENCES categoroies(id);
-ALTER TABLE lists ADD FOREIGN KEY (id_BOARDS) REFERENCES boards(id);
-ALTER TABLE cards ADD FOREIGN KEY (id_LISTS) REFERENCES lists(id);
+ALTER TABLE board ADD FOREIGN KEY (id_CATEGORY) REFERENCES category(id);
+ALTER TABLE list ADD FOREIGN KEY (id_BOARD) REFERENCES board(id);
+ALTER TABLE card ADD FOREIGN KEY (id_LIST) REFERENCES list(id);
 
 /* connect to mysql server with the command 'mysql -u root -p' password: 'mysql' */
+/* run database clear/create script with '\. /Users/pjm/Desktop/hack_reactor/job_search/chrello-app/app/database/schema.sql' */
