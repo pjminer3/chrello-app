@@ -1,22 +1,24 @@
-import mysql from 'mysql';
+import Sequelize from 'sequelize';
 
 
 // create connection with local database
-const dbConnection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'mysql',
-  database: 'chrello'
-});
+// const dbConnection = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: 'mysql',
+//   database: 'chrello'
+// });
 
-dbConnection.connect((err) => {
-  if (err) {
-    console.error('error connect to database: ', err.stack);
-    return;
-  }
+const sequelize = new Sequelize('chrello', 'root', 'mysql', { host: 'localhost', dialect: 'mysql' });
 
-  console.log(`connected as id ${dbConnection.threadId}`);
-});
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection to Sequelize mysql2 database has been established successfully');
+  })
+  .catch((err) => {
+    console.log('Unable to connect to database: ', err);
+  });
 
-export default dbConnection;
+export default sequelize;
 
