@@ -1,15 +1,6 @@
 import Sequelize from 'sequelize';
 import config from './config';
 
-
-// create connection with local database
-// const dbConnection = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'root',
-//   password: 'mysql',
-//   database: 'chrello'
-// });
-
 const sequelize = new Sequelize('chrello', 'root', 'mysql', { host: 'localhost', dialect: 'mysql' });
 
 sequelize
@@ -23,7 +14,6 @@ sequelize
 
 config(sequelize);
 
-sequelize.sync();
+sequelize.sync({ force: true });
 
 export default sequelize;
-

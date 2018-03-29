@@ -25,6 +25,10 @@ module.exports = (sequelize) => {
     },
   });
 
+  Category.hasMany(Board, { as: 'Boards' });
+  Board.hasMany(List, { as: 'Lists' });
+  List.hasMany(Card, { as: 'Cards' });
+
   const db = {
     Category,
     Board,
