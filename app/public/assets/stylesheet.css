@@ -1,7 +1,4 @@
-body {
-  font-family: 'Quicksand', arial, 'sans-serif';
-  background-color: rgb(249, 249, 251);
-}
+
 
 .category-red {
 	background-color: rgb(239, 173, 177);
@@ -17,6 +14,20 @@ body {
 
 .category-blue {
 	background-color: rgb(179, 204, 247);
+}
+
+/* ---------- GENERAL PAGE LAYOUT ---------- */ 
+body {
+  display: grid;
+  grid-template-areas:
+  'header'
+  'body'
+  'body'
+  'body'
+  'body'
+  'body';
+  font-family: 'Quicksand', arial, 'sans-serif';
+  background-color: rgb(249, 249, 251);
 }
 
 /* ---------- BOARD ICON ---------- */
@@ -128,15 +139,66 @@ body {
 
 /* ---------- NAV BAR ---------- */
 
+
 .navbar-brand {
   font-family: 'Concert One', sans-serif;
   height: 65px;
   display: flex;
   align-items: center;
+} 
+
+.navbar {
+  grid-area: header;
+  /*display: flex;*/
+  /*align-items: center;*/
+  background-color: rgb(179, 204, 247);
 }
 
-#chrello {
+.nav-container {
+  display: grid;
+  grid-template-areas: 
+  'title new . .';
+  background-color: #eee;
+}
+
+.nav-header {
+  grid-area: title;
+  display: flex;
+  align-items: center;
+}
+
+.nav-title {
+  font-family: 'Concert One', arial, 'sans-serif';
   font-size: 50px;
+  margin: 5px 10px;
+}
+
+.nav-form {
+  grid-area: new;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.navbar input {
+  height: 45px;
+  width: 300px;
+  margin-right: 5px;
+  border-radius: 10px;
+}
+
+.navbar button {
+  height: 45px;
+  width: 200px;
+  margin-left: 5px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0);
+  background-color: rgb(249, 249, 251);
+  font-family: 'Concert One', arial, 'sans-serif';
+  font-size: 17px;
+  color: rgb(51, 122, 183);
 }
 
 

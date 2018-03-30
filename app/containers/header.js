@@ -41,14 +41,43 @@ class Header extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-default">
+      <nav className="navbar">
+        <div className="nav-container">
+          {/*The brand name Chrello redirect to homepage*/}
+          <div className="nav-header">
+            <Link to="/" className="nav-title">Chrello</Link>
+          </div>
+
+          {/*New Category/List Button*/}
+          <form className="nav-form" onSubmit={this.props.type === 'HomePage' ? this.callNewCategoryActionCreator : this.callNewListActionCreator}>
+            <input
+              type="text"
+              className="form-control"
+              placeholder={this.props.type === 'HomePage' ? 'Category name...' : 'List name...'}
+              onChange={this.updateState}
+              value={this.state.newCategoryName}
+            />
+            <button
+              type="submit"
+              className="nav-button"
+            >
+            {this.props.type === 'HomePage' ? 'Create New Category' : 'Create New List'}
+            </button>
+          </form>
+        </div>
+      </nav>
+    );
+  }
+};
+
+    /*  <nav className="navbar navbar-default">
         <div className="container-fluid">
-          {/* The brand name Chrello re-direct to homepage */}
+          {/* The brand name Chrello re-direct to homepage /}
           <div className="navbar-header">
             <Link to="/" className="navbar-brand" id="chrello">Chrello</Link>
           </div>
 
-          {/* New Category/List Button */}
+          {/* New Category/List Button /}
           <form onSubmit={ this.props.type === 'HomePage' ? this.callNewCategoryActionCreator : this.callNewListActionCreator}>
             <div className="navbar-form navbar-left">
               <input
@@ -68,10 +97,11 @@ class Header extends Component {
           </form>
 
         </div>
-      </nav>
-    );
-  }
-};
+      </nav> */
+
+
+
+
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ createNewCategory, createNewList }, dispatch);
