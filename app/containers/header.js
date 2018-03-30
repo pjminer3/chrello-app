@@ -49,7 +49,7 @@ class Header extends Component {
           </div>
 
           {/*New Category/List Button*/}
-          <form onSubmit={this.props.type === 'HomePage' ? this.callNewCategoryActionCreator : this.callNewListActionCreator}>
+          <form className="nav-form" onSubmit={this.props.type === 'HomePage' ? this.callNewCategoryActionCreator : this.callNewListActionCreator}>
             <input
               type="text"
               className="form-control"
