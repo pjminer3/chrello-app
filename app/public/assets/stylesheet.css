@@ -157,7 +157,8 @@ body {
 .nav-container {
   display: grid;
   grid-template-areas: 
-  'title new . .'
+  'title new . .';
+  background-color: #eee;
 }
 
 .nav-header {
@@ -177,7 +178,27 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-end;
+}
+
+.navbar input {
+  height: 45px;
+  width: 300px;
+  margin-right: 5px;
+  border-radius: 10px;
+}
+
+.navbar button {
+  height: 45px;
+  width: 200px;
+  margin-left: 5px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0);
+  background-color: rgb(249, 249, 251);
+  font-family: 'Concert One', arial, 'sans-serif';
+  font-size: 17px;
+  color: rgb(51, 122, 183);
 }
 
 
