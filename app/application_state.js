@@ -1,5 +1,5 @@
 // board id
-// project id
+// category id
 // list id
 // card id
 
