@@ -1,4 +1,4 @@
-// Authentication middleware
+// Authentication middleware (for future development)
 
 import Promise from 'bluebird';
 import models from '../models';

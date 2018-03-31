@@ -26,6 +26,7 @@
   "homepage": "https://github.com/pjminer3/chrello-app#readme",
   "dependencies": {
     "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.3",

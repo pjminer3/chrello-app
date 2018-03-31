@@ -1,25 +1,25 @@
 import Sequelize from 'sequelize';
 
-module.exports = (sequelize) => {
-  const Category = sequelize.define('category', {
+const CreateTables = (sequelizeConnection) => {
+  const Category = sequelizeConnection.define('category', {
     categoryName: {
       type: Sequelize.STRING,
     },
   });
 
-  const Board = sequelize.define('board', {
+  const Board = sequelizeConnection.define('board', {
     boardName: {
       type: Sequelize.STRING,
     },
   });
 
-  const List = sequelize.define('list', {
+  const List = sequelizeConnection.define('list', {
     listName: {
       type: Sequelize.STRING,
     },
   });
 
-  const Card = sequelize.define('card', {
+  const Card = sequelizeConnection.define('card', {
     cardContent: {
       type: Sequelize.TEXT,
     },
@@ -38,3 +38,5 @@ module.exports = (sequelize) => {
 
   return db;
 };
+
+export default CreateTables;
