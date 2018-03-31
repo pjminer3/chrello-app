@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
 
-const CreateTables = (sequelizeConnection) => {
+const CreateModels = (sequelizeConnection) => {
   const Category = sequelizeConnection.define('category', {
     categoryName: {
       type: Sequelize.STRING,
@@ -25,18 +25,25 @@ const CreateTables = (sequelizeConnection) => {
     },
   });
 
+  // adds the appropriate foreignId column on each instance
+  // gives the '.set<thing>` method
+  Board.belongsTo(Category);
+  List.belongsTo(Board);
+  Card.belongsTo(List);
+
+  // enables bi-directional associations
   Category.hasMany(Board, { as: 'Boards' });
   Board.hasMany(List, { as: 'Lists' });
   List.hasMany(Card, { as: 'Cards' });
 
-  const db = {
+  const models = {
     Category,
     Board,
     List,
     Card,
   };
 
-  return db;
+  return models;
 };
 
-export default CreateTables;
+export default CreateModels;

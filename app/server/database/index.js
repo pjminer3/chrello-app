@@ -1,9 +1,10 @@
 import Sequelize from 'sequelize';
 import config from './config';
+// We have access to all database models via ./config
 
-const sequelize = new Sequelize('chrello', 'root', 'mysql', { host: 'localhost', dialect: 'mysql' });
+const db = new Sequelize('chrello', 'root', 'mysql', { host: 'localhost', dialect: 'mysql' });
 
-sequelize
+db
   .authenticate()
   .then(() => {
     console.log('Connection to Sequelize mysql2 database has been established successfully');
@@ -12,10 +13,10 @@ sequelize
     console.log('Unable to connect to database: ', err);
   });
 
-const { Category, Board, List, Card } = config(sequelize);
+const { Category, Board, List, Card } = config(db);
 
 // Drops existing DB and adds initial data
-sequelize.sync({ force: true })
+db.sync({ force: true })
   .then(() => {
     return Category.create({ categoryName: 'Personal Boards-' });
   })
@@ -44,4 +45,4 @@ sequelize.sync({ force: true })
     return Card.create({ cardContent: 'card2-', listId: 1 });
   });
 
-export default sequelize;
+export default db;
