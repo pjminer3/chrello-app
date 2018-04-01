@@ -1,7 +1,10 @@
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
+import morgan from 'morgan';
+
 import db from './database/index';
+import router from './routes';
 
 const app = express();
 
@@ -15,3 +18,4 @@ app.get("/home", (req, res) => {
 });
 
 export default app;
+
