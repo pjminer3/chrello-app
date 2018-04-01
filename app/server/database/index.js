@@ -45,4 +45,4 @@ db.sync({ force: true })
     return Card.create({ cardContent: 'card2-', listId: 1 });
   });
 
-export default db;
+export default db; 
