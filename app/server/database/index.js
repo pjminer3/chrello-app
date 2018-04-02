@@ -13,6 +13,7 @@ db
     console.log('Unable to connect to database: ', err);
   });
 
+// Adds models to the database
 const { Category, Board, List, Card } = config(db);
 
 // Drops existing DB and adds initial data
@@ -45,4 +46,4 @@ db.sync({ force: true })
     return Card.create({ cardContent: 'card2-', listId: 1 });
   });
 
-export default db; 
+export { db, Category, Board, List, Card }; 
