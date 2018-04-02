@@ -15,6 +15,7 @@ const category = {
     }, 
     post: function(request, response) {
         console.log('category.post was called')
+        console.log(request.body);
     },
 };
 
