@@ -7,7 +7,7 @@ router.get('/category', controller.category.get);
 router.post('/category/:categoryName', controller.category.post);
 
 router.get('/board/:categoryId', controller.board.get);
-router.post('/board/:categoryName/:boardName', controller.board.post);
+router.post('/board/:categoryId/:boardName', controller.board.post);
 
 router.get('/list/:boardName', controller.list.get);
 router.post('/list/:boardName/:listName', controller.list.post);

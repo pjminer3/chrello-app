@@ -22,6 +22,18 @@ const board = {
     }, 
     post: function(request, response) {
         console.log('board.post was called')
+        console.log(request.params); // {categoryId: *id*, boardName: *name*}
+        const { categoryId } = request.params;
+        let { boardName } = request.params;
+
+        Board.create({ boardName, categoryId })
+          .then(() => {
+              console.log('Board successfully created');
+              response.sendStatus(201);
+          })
+          .catch((err) => {
+              console.log('There was an error in creating the new board: ', err);
+          });
     },
 };
 
