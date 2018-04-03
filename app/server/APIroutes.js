@@ -9,7 +9,7 @@ router.post('/category/:categoryName', controller.category.post);
 router.get('/board/:categoryId', controller.board.get);
 router.post('/board/:categoryId/:boardName', controller.board.post);
 
-router.get('/list/:boardName', controller.list.get);
+router.get('/list/:boardId', controller.list.get);
 router.post('/list/:boardName/:listName', controller.list.post);
 
 router.get('/card/:listName', controller.card.get);
