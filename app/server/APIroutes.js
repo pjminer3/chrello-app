@@ -10,9 +10,9 @@ router.get('/board/:categoryId', controller.board.get);
 router.post('/board/:categoryId/:boardName', controller.board.post);
 
 router.get('/list/:boardId', controller.list.get);
-router.post('/list/:boardName/:listName', controller.list.post);
+router.post('/list/:boardId/:listName', controller.list.post);
 
-router.get('/card/:listName', controller.card.get);
-router.post('/card/:listName/:cardContent', controller.card.post);
+router.get('/card/:listId', controller.card.get);
+router.post('/card/:listId/:cardContent', controller.card.post);
 
 export default router;

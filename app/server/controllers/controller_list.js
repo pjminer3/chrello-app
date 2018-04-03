@@ -10,15 +10,25 @@ const list = {
             where: { boardId },
             attributes: ['listName', 'id']
         })
-          .then((lists) => {
+          .then(lists => {
               response.json(lists);
           })
-          .catch((err) => {
+          .catch(err => {
               console.log('There was an error in getting lists: ', err);
           });
     }, 
     post: function(request, response) {
-        console.log('list.post was called')
+        console.log('list.post was called');
+        console.log(request.params); // { boardId, listName };
+        const { boardId, listName } = request.params;
+
+        List.create({ boardId, listName })
+          .then(() => {
+              response.sendStatus(201);
+          })
+          .catch(err => {
+            console.log('There was an error in creating the new list: ', err);
+          });
     },
 };
 
