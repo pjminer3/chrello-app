@@ -18,6 +18,15 @@ const card = {
     }, 
     post: function(request, response) {
         console.log('card.post was called');
+        const { listId, cardContent} = request.params;
+
+        Card.create({ listId, cardContent })
+          .then(() => {
+              response.sendStatus(201);
+          })
+          .catch(err => {
+              console.log('There was an error in creating the card: ', card);
+          });
     },
 };
 
