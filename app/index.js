@@ -5,9 +5,9 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxPromise from 'redux-promise';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import HomePage from './containers/home_page';
-import BoardPage from './containers/board_page';
-import reducers from './reducers/index';
+import HomePage from './client/containers/home_page';
+import BoardPage from './client/containers/board_page';
+import reducers from './client/reducers/index';
 
 // initial state for dev purposes only
 import initialState from './application_state';
@@ -28,3 +28,4 @@ ReactDOM.render(
   </Provider>
   , document.getElementById('root'),
 );
+
