@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-
 import { createNewCategory, createNewList } from '../actions';
 
 class Header extends Component {
@@ -69,39 +68,6 @@ class Header extends Component {
     );
   }
 };
-
-    /*  <nav className="navbar navbar-default">
-        <div className="container-fluid">
-          {/* The brand name Chrello re-direct to homepage /}
-          <div className="navbar-header">
-            <Link to="/" className="navbar-brand" id="chrello">Chrello</Link>
-          </div>
-
-          {/* New Category/List Button /}
-          <form onSubmit={ this.props.type === 'HomePage' ? this.callNewCategoryActionCreator : this.callNewListActionCreator}>
-            <div className="navbar-form navbar-left">
-              <input
-                type="text"
-                className="form-control"
-                placeholder={this.props.type === 'HomePage' ? 'Category name...' : 'List name...'}
-                onChange={this.updateState}
-                value={this.state.newCategoryName}
-              />
-            </div>
-            <button
-              type="submit"
-              className="btn btn-default navbar-btn navbar-left"
-            >
-              {this.props.type === 'HomePage' ? 'Create New Category' : 'Create New List'}
-            </button>
-          </form>
-
-        </div>
-      </nav> */
-
-
-
-
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ createNewCategory, createNewList }, dispatch);
