@@ -22,12 +22,16 @@ const indexPath = path.join(__dirname, '../index.html'); // sets indexPath equal
 app.use(publicPath);
 
 app.get("/", (request, response) => {
-  res.sendFile(indexPath);
+  response.sendFile(indexPath);
 });
 
-app.get("/:category/:board", (request, response) => {
-  console.log(request.params);
-  response.send('You\'re learning!');
+// to catch any refreshes/back button pushes TODO: FIX THIS
+app.get("/*", (request, response) => {
+  response.sendFile(indexPath, (err) => {
+    if (err) {
+      response.status(500).send(err);
+    }
+  });
 });
 
 export default app;
