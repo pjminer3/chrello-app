@@ -38,7 +38,9 @@ class Header extends Component {
   callNewListActionCreator(event) {
     event.preventDefault();
     this.props.createNewList(this.state.nameInput, this.props.activeBoard);
-    dbCreateNewList(1, this.state.nameInput);
+    /********************************* */
+    dbCreateNewList(1, this.state.nameInput); // TODO: replace 1 with real actual boardId
+    /********************************* */
     this.setState({ nameInput: '' });
   }
 
