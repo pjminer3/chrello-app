@@ -4,7 +4,7 @@ const board = {
     get: function(request, response) {
         console.log('board.get was called')
         console.log(request.params); // {categoryId: *id*};
-        const { categoryId } = request.params;
+        const { params: {categoryId } } = request;
 
         // find all the boards for the specified category
         Board.findAll({
@@ -18,13 +18,14 @@ const board = {
           })
           .catch((err) => {
               console.log('There was an error getting boards: ', err);
+              response.sendStatus(500);
           });
     }, 
     post: function(request, response) {
         console.log('board.post was called')
         console.log(request.params); // {categoryId: *id*, boardName: *name*}
-        const { categoryId } = request.params;
-        let { boardName } = request.params;
+        const { params: { categoryId } } = request;
+        let { params: { boardName } } = request;
 
         Board.create({ boardName, categoryId })
           .then(() => {
@@ -33,6 +34,7 @@ const board = {
           })
           .catch((err) => {
               console.log('There was an error in creating the new board: ', err);
+              response.sendStatus(500);
           });
     },
 };

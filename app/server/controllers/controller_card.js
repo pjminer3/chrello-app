@@ -3,7 +3,7 @@ import { Card } from '../database';
 const card = {
     get: function(request, response) {
         console.log('card.get was called');
-        const { listId } = request.params;
+        const { params: { listId } } = request;
 
         Card.findAll({
             where: { listId },
@@ -14,11 +14,13 @@ const card = {
           })
           .catch(err => {
               console.log('There was an error in retreiving cards: ', err);
+              response.sendStatus(500);
           });
     }, 
+
     post: function(request, response) {
         console.log('card.post was called');
-        const { listId, cardContent} = request.params;
+        const { params: { listId, cardContent} } = request;
 
         Card.create({ listId, cardContent })
           .then(() => {
@@ -26,6 +28,7 @@ const card = {
           })
           .catch(err => {
               console.log('There was an error in creating the card: ', card);
+              response.sendStatus(500);
           });
     },
 };
