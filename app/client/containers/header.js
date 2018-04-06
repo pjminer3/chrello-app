@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { createNewCategory, createNewList } from '../actions';
+import dbCreateNewCategory from '../helpers/createCategory';
 
 class Header extends Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class Header extends Component {
   callNewCategoryActionCreator(event) {
     event.preventDefault();
     this.props.createNewCategory(this.state.newCategoryName);
+    dbCreateNewCategory(this.state.newCategoryName);
     this.setState({ newCategoryName: '' });
   }
 
