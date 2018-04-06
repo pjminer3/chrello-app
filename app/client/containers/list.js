@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import Card from '../components/card';
 import { createNewCard, deleteCard } from '../actions';
+import dbCreateNewCard from '../helpers/createCard';
 
 class List extends Component {
   constructor(props) {
@@ -20,6 +21,9 @@ class List extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.createNewCard(this.state.cardValue, this.props.listId);
+    /************************************************** */
+    dbCreateNewCard(1, this.state.cardValue); // TODO: GET HOOKED UP WITH REAL CARD VALUE
+    /************************************************** */
     this.setState({ cardValue: '' });
   }
 

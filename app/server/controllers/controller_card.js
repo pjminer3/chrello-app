@@ -20,6 +20,7 @@ const card = {
 
     post: function(request, response) {
         console.log('card.post was called');
+        console.log('Params: ', request.params);
         const { params: { listId, cardContent} } = request;
 
         Card.create({ listId, cardContent })

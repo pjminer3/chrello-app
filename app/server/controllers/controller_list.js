@@ -3,7 +3,6 @@ import { List } from '../database';
 const list = {
     get: function(request, response) {
         console.log('list.get was called');
-        console.log(request.params); 
         const { params: {boardId } } = request;
 
         List.findAll({
@@ -20,7 +19,6 @@ const list = {
     }, 
     post: function(request, response) {
         console.log('list.post was called');
-        console.log(request.params); // { boardId, listName };
         const { params: {boardId, listName } } = request;
 
         List.create({ boardId, listName })
