@@ -20,7 +20,6 @@ const card = {
 
     post: function(request, response) {
         console.log('card.post was called');
-        console.log('Params: ', request.params);
         const { params: { listId, cardContent} } = request;
 
         Card.create({ listId, cardContent })
@@ -32,6 +31,21 @@ const card = {
               response.sendStatus(500);
           });
     },
+
+    delete: function(request, response) {
+        console.log('card.delete was called');
+        const { params: { cardId } } = request;
+
+        Card.destroy({
+            where: { id: cardId },
+        })
+          .then(() => {
+              response.sendStatus(200);
+          })
+          .catch(err => {
+              response.sendStatus(500);
+          });
+    }
 };
 
 export default card;

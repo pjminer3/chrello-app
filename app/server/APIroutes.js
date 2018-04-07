@@ -14,5 +14,6 @@ router.post('/list/:boardId/:listName', controller.list.post);
 
 router.get('/card/:listId', controller.card.get);
 router.post('/card/:listId/:cardContent', controller.card.post);
+router.delete('/card/:cardId', controller.card.delete);
 
 export default router;
