@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import ReduxPromise from 'redux-promise';
+import thunk from 'redux-thunk';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import HomePage from './client/containers/home_page';
@@ -15,7 +15,7 @@ import initialState from './application_state';
 // css
 import './public/assets/stylesheet.css';
 
-const store = createStore(reducers, initialState, applyMiddleware(ReduxPromise));
+const store = createStore(reducers, initialState, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>

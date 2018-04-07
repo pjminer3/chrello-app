@@ -6,7 +6,7 @@ import { NEW_CARD, DELETE_CARD, createNewCard, deleteCard } from './actions_card
 import { SET_ACTIVE_BOARD, setActiveBoard } from './actions_activeBoard';
 
 
-module.exports = {
+export default {
   createNewCategory,
   NEW_CATEGORY,
   createNewBoard,
