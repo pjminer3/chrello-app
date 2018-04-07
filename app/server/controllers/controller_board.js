@@ -19,7 +19,8 @@ const board = {
               console.log('There was an error getting boards: ', err);
               response.sendStatus(500);
           });
-    }, 
+    },
+
     post: function(request, response) {
         console.log('board.post was called')
         const { params: { categoryId } } = request;
