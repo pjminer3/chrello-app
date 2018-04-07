@@ -3,7 +3,6 @@ import { Board } from '../database';
 const board = {
     get: function(request, response) {
         console.log('board.get was called')
-        console.log(request.params); // {categoryId: *id*};
         const { params: {categoryId } } = request;
 
         // find all the boards for the specified category
@@ -20,10 +19,10 @@ const board = {
               console.log('There was an error getting boards: ', err);
               response.sendStatus(500);
           });
-    }, 
+    },
+
     post: function(request, response) {
         console.log('board.post was called')
-        console.log(request.params); // {categoryId: *id*, boardName: *name*}
         const { params: { categoryId } } = request;
         let { params: { boardName } } = request;
 

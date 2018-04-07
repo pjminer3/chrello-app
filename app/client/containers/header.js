@@ -4,14 +4,17 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { createNewCategory, createNewList } from '../actions';
+import dbCreateNewCategory from '../helpers/createCategory';
+import dbCreateNewList from '../helpers/createList';
 
 class Header extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      newCategoryName: '',
+      nameInput: '',
     };
+    
 
     this.updateState = this.updateState.bind(this);
     this.callNewCategoryActionCreator = this.callNewCategoryActionCreator.bind(this);
@@ -20,21 +23,25 @@ class Header extends Component {
 
   // Makes Category Name Input a controlled component
   updateState(event) {
-    this.setState({ newCategoryName: event.target.value });
+    this.setState({ nameInput: event.target.value });
   }
 
   // Creates a new Category on home page and resets input value
   callNewCategoryActionCreator(event) {
     event.preventDefault();
-    this.props.createNewCategory(this.state.newCategoryName);
-    this.setState({ newCategoryName: '' });
+    this.props.createNewCategory(this.state.nameInput);
+    dbCreateNewCategory(this.state.nameInput);
+    this.setState({ nameInput: '' });
   }
 
   // Creates a new List on board page and resets input value
   callNewListActionCreator(event) {
     event.preventDefault();
-    this.props.createNewList(this.state.newCategoryName, this.props.activeBoard);
-    this.setState({ newCategoryName: '' });
+    this.props.createNewList(this.state.nameInput, this.props.activeBoard);
+    /********************************* */
+    dbCreateNewList(1, this.state.nameInput); // TODO: replace 1 with real actual boardId
+    /********************************* */
+    this.setState({ nameInput: '' });
   }
 
 
@@ -54,7 +61,7 @@ class Header extends Component {
               className="form-control"
               placeholder={this.props.type === 'HomePage' ? 'Category name...' : 'List name...'}
               onChange={this.updateState}
-              value={this.state.newCategoryName}
+              value={this.state.nameInput}
             />
             <button
               type="submit"

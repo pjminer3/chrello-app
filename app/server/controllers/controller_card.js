@@ -31,6 +31,21 @@ const card = {
               response.sendStatus(500);
           });
     },
+
+    delete: function(request, response) {
+        console.log('card.delete was called');
+        const { params: { cardId } } = request;
+
+        Card.destroy({
+            where: { id: cardId },
+        })
+          .then(() => {
+              response.sendStatus(200);
+          })
+          .catch(err => {
+              response.sendStatus(500);
+          });
+    }
 };
 
 export default card;

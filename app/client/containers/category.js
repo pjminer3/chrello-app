@@ -5,6 +5,7 @@ import { Modal, Button } from 'react-bootstrap';
 
 import { createNewBoard } from '../actions';
 import BoardIcon from './board_icon';
+import dbCreateBoard from '../helpers/createBoard';
 
 class Category extends Component {
   // Receives Category Name from HomePage component which connects to Redux
@@ -31,6 +32,9 @@ class Category extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.createNewBoard(this.state.newBoard, this.props.categoryName);
+    /************************************************************************** */
+    dbCreateBoard(1, this.state.newBoard); // TODO: REPLACE 1 WITH REAL BOARD ID
+    /************************************************************************** */
     this.setState({ newBoard: '', show: false });
   }
 
