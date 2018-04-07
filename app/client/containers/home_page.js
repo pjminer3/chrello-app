@@ -11,7 +11,16 @@ class HomePage extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    // create the fetch request for category and board data
+    // I want an array of category objects {id, categoryName, boards[]}
+  }
+
   render() {
+    if (this.props.isFetching) {
+      return <div>loading...</div>
+    }
+    
     return (
       <div id="#body">
         <HeaderBar type="HomePage" />
