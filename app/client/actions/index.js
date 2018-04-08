@@ -5,8 +5,7 @@ import { NEW_LIST, createNewList } from './actions_list';
 import { NEW_CARD, DELETE_CARD, createNewCard, deleteCard } from './actions_card';
 import { SET_ACTIVE_BOARD, setActiveBoard } from './actions_activeBoard';
 
-
-export default {
+export {
   createNewCategory,
   fetchCategories, 
   NEW_CATEGORY,

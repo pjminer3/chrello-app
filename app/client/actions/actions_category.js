@@ -13,9 +13,11 @@ export const createNewCategory = (categoryName) => {
 };
 
 // to show activity indicator
-export const fetchCategoriesRequest = () => ({
+export const fetchCategoriesRequest = () => {
+  
+  return {
   type: FETCH_CATEGORIES_REQUEST
-});
+}};
 
 // on successful fetch
 export const fetchCategoriesSuccess = (jsonData) => ({
@@ -31,6 +33,7 @@ export const fetchCategoriesFailure = (err) => ({
 
 // actual fetching function
 export const fetchCategories = () => {
+  console.log('-------------------------- INSIDE FETCH CATEGORIES REQUEST --------------------------');
   return async (dispatch) => {
     // trigger the spinner to tell UI we're fetching data
     dispatch(fetchCategoriesRequest());
