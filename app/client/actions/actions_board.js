@@ -18,11 +18,23 @@ const fetchBoardRequest = () => {
 };
 
 // on successful fetch
-const fetchBoardSuccess = (jsonData) => {
+const fetchBoardSuccess = (obj) => {
+  const { data } = obj;
+  const { categoryName } = obj;
   console.log('Inside fetchBoardSuccess');
-  console.log('DATA: ', jsonData); 
+  console.log('DATA: ', data); 
 
-  return { type: FETCH_BOARDS_SUCCES, };
+  const payload = [];
+  let boardObj = {};
+
+  data.forEach(obj => {
+    boardObj.boardName = obj.boardName,
+    boardObj.categoryName = categoryName;
+    payload.push(boardObj);
+    boardObj = {};
+  });
+
+  return { type: FETCH_BOARDS_SUCCESS, payload };
 };
 
 // on failed fetch
@@ -39,7 +51,7 @@ export const fetchBoards = (categoryId) => {
       let response = await fetch(`http://127.0.0.1:8080/api/board/${categoryId}`);
       let data = await response.json();
       console.log('BOARD DATA: ', data);
-      dispatch(fetchBoardSuccess(data));
+      dispatch(fetchBoardSuccess({ data, categoryName: categoryId }));
     } catch(err) {
       dispatch(fetchBoardFailure(err));
     }

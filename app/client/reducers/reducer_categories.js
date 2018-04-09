@@ -4,6 +4,7 @@ import {
   FETCH_CATEGORIES_SUCCESS,
   FETCH_CATEGORIES_FAILURE,
   NEW_BOARD,
+  FETCH_BOARDS_SUCCESS,
  } from '../actions';
 
 // initiate application state with 'Personal Boards' category and no boards
@@ -32,9 +33,18 @@ export default function (state = { byId: {}, allIds: [] }, action) {
       return Object.assign({}, state);
 
     case FETCH_CATEGORIES_SUCCESS:
-      console.log('The action: ', action);
       return action.categories;
-      
+    
+    case FETCH_BOARDS_SUCCESS:
+      console.log('****** INSIDE REDUCER: ', payload);
+
+      for (let i = 0; i < payload.length; i++) {
+        let board = payload[i];
+        state.byId[board.categoryName].boards.push(board.boardName);
+        console.log('********** ', board);
+      } 
+      return Object.assign({}, state);
+
     default:
       return state;
   }
