@@ -23,11 +23,26 @@ export const fetchCategoriesRequest = () => {
 // on successful fetch
 export const fetchCategoriesSuccess = (jsonData) => {
   console.log('Inside fetchCategoriesSuccess');
-  console.log('DATA: ', jsonData);
+  console.log('DATA: ', jsonData); // [{ categoryName: 'name1' }, { categoryName: 'name2' }]
+
+  /*
+  state = { byId: { 'Personal Boards': { id: 'Personal Boards', boards: [] } }, allIds: ['Personal Boards']
+  */
+
+  const dbState = { byId: {}, allIds: [] };
+
+  jsonData.forEach(obj => {
+    let { categoryName } = obj;
+    dbState.byId[categoryName] = {
+      id: categoryName,
+      boards: [],
+    };
+    dbState.allIds.push(categoryName);
+  });
 
   return {
     type: FETCH_CATEGORIES_SUCCESS,
-    categories: jsonData,
+    categories: dbState,
 }};
 
 // on failed fetch
@@ -49,8 +64,6 @@ export const fetchCategories = () => {
       // on success
       let response = await fetch('http://127.0.0.1:8080/api/category');
       let data = await response.json();
-
-      
 
       dispatch(fetchCategoriesSuccess(data));
     } catch(err) {
