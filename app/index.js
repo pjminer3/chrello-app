@@ -9,13 +9,10 @@ import HomePage from './client/containers/home_page';
 import BoardPage from './client/containers/board_page';
 import reducers from './client/reducers/index';
 
-// initial state for dev purposes only
-import initialState from './application_state';
-
 // css
 import './public/assets/stylesheet.css';
 
-const store = createStore(reducers, initialState, applyMiddleware(thunk));
+const store = createStore(reducers, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>

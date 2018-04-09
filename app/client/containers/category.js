@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
 
-import { createNewBoard } from '../actions';
+import { createNewBoard, fetchBoards } from '../actions';
 import BoardIcon from './board_icon';
 import dbCreateBoard from '../helpers/createBoard';
 
@@ -25,7 +25,7 @@ class Category extends Component {
   }
 
   componentDidMount() {
-    
+    this.props.fetchBoards(this.props.categoryName);
   }
 
   handleNameChange(event) {
@@ -99,7 +99,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createNewBoard }, dispatch);
+  return bindActionCreators({ createNewBoard, fetchBoards }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(Category);

@@ -18,10 +18,6 @@ class HomePage extends Component {
   }
 
   render() {
-    if (this.props.isFetching) {
-      return <div>loading...</div>
-    }
-    
     return (
       <div id="#body">
         <HeaderBar type="HomePage" />

@@ -11,7 +11,6 @@ const app = express();
 const publicPath = express.static(path.join(__dirname, '../')); // sets the publicPath equal to the build folder
 const indexPath = path.join(__dirname, '../index.html'); // sets indexPath equal to the index.html file in the build folder
 
-// DANNY! WHAT DOES THIS DO!
 app.use(publicPath);
 
 // logging and parsing

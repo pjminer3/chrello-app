@@ -7,7 +7,7 @@ import {
  } from '../actions';
 
 // initiate application state with 'Personal Boards' category and no boards
-export default function (state = { byId: { 'Personal Boards': { id: 'Personal Boards', boards: [] } }, allIds: ['Personal Boards'] }, action) {
+export default function (state = { byId: {}, allIds: [] }, action) {
   const { payload } = action;
 
   switch (action.type) {
