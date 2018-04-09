@@ -3,7 +3,9 @@ import { Board } from '../database';
 const board = {
     get: function(request, response) {
         console.log('board.get was called')
-        const { params: {categoryCategoryName } } = request;
+        const categoryCategoryName = request.params.categoryId;
+
+        console.log('INSIDE BOARD CONTROLLER: ', categoryCategoryName);
 
         // find all the boards for the specified category
         Board.findAll({
