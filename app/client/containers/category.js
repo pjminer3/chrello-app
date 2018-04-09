@@ -24,6 +24,10 @@ class Category extends Component {
     this.handleNameChange = this.handleNameChange.bind(this);
   }
 
+  componentDidMount() {
+    
+  }
+
   handleNameChange(event) {
     this.setState({ newBoard: event.target.value });
   }

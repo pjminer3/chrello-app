@@ -23,14 +23,10 @@ export const fetchCategoriesRequest = () => {
 // on successful fetch
 export const fetchCategoriesSuccess = (jsonData) => {
   console.log('Inside fetchCategoriesSuccess');
-  console.log('DATA: ', jsonData); // [{ categoryName: 'name1' }, { categoryName: 'name2' }]
+  console.log('DATA: ', jsonData); 
 
-  /*
-  state = { byId: { 'Personal Boards': { id: 'Personal Boards', boards: [] } }, allIds: ['Personal Boards']
-  */
-
+  // create initial category state provided by DB
   const dbState = { byId: {}, allIds: [] };
-
   jsonData.forEach(obj => {
     let { categoryName } = obj;
     dbState.byId[categoryName] = {

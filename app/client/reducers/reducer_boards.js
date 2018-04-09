@@ -1,6 +1,6 @@
 // this reducer controls board state and has mulitple cases to catch different types of actions
 
-import { NEW_BOARD, NEW_LIST } from '../actions';
+import { NEW_BOARD, NEW_LIST, FETCH_BOARDS_FAILURE, FETCH_BOARDS_SUCCESS } from '../actions';
 
 export default function (state = { byId: {}, allIds: [] }, action) {
   const { payload } = action;
