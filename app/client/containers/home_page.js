@@ -14,7 +14,6 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    console.log(typeof this.props.fetchCategories);
     this.props.fetchCategories();
   }
 

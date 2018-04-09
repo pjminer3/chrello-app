@@ -25,16 +25,5 @@ app.get("/", (request, response) => {
   response.sendFile(indexPath);
 });
 
-// to catch any refreshes/back button pushes TODO: FIX THIS
-app.get("/*", (request, response) => {
-  console.log(request.params);
-  response.sendFile(indexPath, (err) => {
-    if (err) {
-      // response.status(500).send(err);
-      throw new Error('Shit doesnt work');
-    }
-  });
-});
-
 export default app;
 

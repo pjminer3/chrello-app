@@ -31,7 +31,8 @@ export default function (state = { byId: { 'Personal Boards': { id: 'Personal Bo
 
       return Object.assign({}, state);
 
-    
+    case FETCH_CATEGORIES_SUCCESS:
+      // Receives 
     default:
       return state;
   }

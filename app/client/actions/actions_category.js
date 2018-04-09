@@ -14,39 +14,48 @@ export const createNewCategory = (categoryName) => {
 
 // to show activity indicator
 export const fetchCategoriesRequest = () => {
+  console.log('inside fetchCategoriesRequest');
   
   return {
-  type: FETCH_CATEGORIES_REQUEST
-}};
+    type: FETCH_CATEGORIES_REQUEST
+  }};
 
 // on successful fetch
-export const fetchCategoriesSuccess = (jsonData) => ({
-  type: FETCH_CATEGORIES_SUCCESS,
-  categories: jsonData,
-});
+export const fetchCategoriesSuccess = (jsonData) => {
+  console.log('Inside fetchCategoriesSuccess');
+  console.log('DATA: ', jsonData);
+
+  return {
+    type: FETCH_CATEGORIES_SUCCESS,
+    categories: jsonData,
+}};
 
 // on failed fetch
-export const fetchCategoriesFailure = (err) => ({
-  type: FETCH_CATEGORIES_FAILURE,
-  error: err,
-});
+export const fetchCategoriesFailure = (err) => {
+  console.log('Inside fetchCategoriesFailure');
+  return {
+    type: FETCH_CATEGORIES_FAILURE,
+    error: err,
+  };
+}
 
 // actual fetching function
 export const fetchCategories = () => {
-  console.log('-------------------------- INSIDE FETCH CATEGORIES REQUEST --------------------------');
+  // FINISH UP THE REDUCERS FOR THE BELOW ACTIONS
   return async (dispatch) => {
     // trigger the spinner to tell UI we're fetching data
     dispatch(fetchCategoriesRequest());
     try {
       // on success
-      let response = await fetch('localhost:8080/api/category');
-      dispatch(fetchCategoriesSuccess(response));
+      let response = await fetch('http://127.0.0.1:8080/api/category');
+      let data = await response.json();
+
+      
+
+      dispatch(fetchCategoriesSuccess(data));
     } catch(err) {
       // on failure
       dispatch(fetchCategoriesFailure(err));
     }
   }
 }
-
-
-  
