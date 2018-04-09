@@ -34,6 +34,7 @@ const fetchBoardSuccess = (obj) => {
     boardObj = {};
   });
 
+  // payload is an array of { boardName, categoryName } objects for category
   return { type: FETCH_BOARDS_SUCCESS, payload };
 };
 

@@ -45,6 +45,20 @@ export default function (state = { byId: {}, allIds: [] }, action) {
 
       return newState;
 
+      case FETCH_BOARDS_SUCCESS:
+        newState = {byId: {}, allIds: []}
+
+        payload.forEach( board => {
+          newState.byId[board.boardName] = {
+            id: board.boardName,
+            category: board.categoryName,
+            lists: [],
+          }
+          newState.allIds.push(board.boardName);
+        })
+        return newState;
+        // TODO: FIGURE OUT WHY THESE AREN'T RENDERING
+
     default:
       return state;
   }
