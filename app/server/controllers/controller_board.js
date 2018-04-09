@@ -7,7 +7,7 @@ const board = {
 
         // find all the boards for the specified category
         Board.findAll({
-            attributes: ['boardName', 'id'],
+            attributes: ['boardName'],
             where: {
                 categoryId
             }
