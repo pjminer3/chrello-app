@@ -9,7 +9,7 @@ export default function (state = { byId: {}, allIds: [] }, action) {
 
   switch (action.type) {
     case NEW_BOARD:
-      // payload = { boadName, categoryName }
+      // payload = { boadName, categoryId }
 
       // edge case: duplicate boardName
       if (state.byId[payload.boardName]) {
@@ -21,7 +21,7 @@ export default function (state = { byId: {}, allIds: [] }, action) {
         byId: Object.assign({}, state.byId, {
           [payload.boardName]: {
             id: payload.boardName,
-            category: payload.categoryName,
+            categoryId: payload.categoryId,
             lists: [],
           },
         }),

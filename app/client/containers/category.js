@@ -25,7 +25,7 @@ class Category extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchBoards(this.props.categoryName);
+    this.props.fetchBoards(this.props.id);
   }
 
   handleNameChange(event) {
@@ -35,9 +35,9 @@ class Category extends Component {
   // this calls the action creator with boardName and category id
   handleSubmit(event) {
     event.preventDefault();
-    this.props.createNewBoard(this.state.newBoard, this.props.categoryName);
+    this.props.createNewBoard(this.state.newBoard, this.props.id);
     /************************************************************************** */
-    dbCreateBoard(1, this.state.newBoard); // TODO: REPLACE 1 WITH REAL BOARD ID
+    dbCreateBoard(this.props.id, this.state.newBoard); // TODO: REPLACE 1 WITH REAL BOARD ID
     /************************************************************************** */
     this.setState({ newBoard: '', show: false });
   }
@@ -63,7 +63,7 @@ class Category extends Component {
         <div className="panel-body">
           <div className="row">
             <div className="board-container">
-              {this.props.boards.map( boardName => <BoardIcon categoryName={this.props.categoryName} boardName={boardName} key={boardName} />) }
+              {this.props.boards.map( boardName => <BoardIcon categoryName={this.props.categoryName} categoryId={this.props.id} boardName={boardName} key={boardName} />) }
             </div>
 
             <Button

@@ -28,7 +28,7 @@ export default function (state = { byId: {}, allIds: [] }, action) {
     case NEW_BOARD:
       // payload = {boardName, categoryName}
 
-      state.byId[payload.categoryName].boards.push(payload.boardName);
+      state.byId[payload.categoryId].boards.push(payload.boardName);
 
       return Object.assign({}, state);
 
