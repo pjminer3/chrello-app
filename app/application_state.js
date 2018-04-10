@@ -7,16 +7,18 @@
 const applicationState = {
   Categories: {
     byId: {
-      'Personal Boards': {
-        id: 'Personal Boards',
+      1: {
+        id: 1,
+        categoryName: 'Personal Boards',
         boards: [],
       },
-      TMs: {
-        id: 'TMs',
+      2: {
+        id: 2,
+        categoryName: 'TMs',
         boards: ['Danny', 'Kirk'],
       },
     },
-    allIds: ['Personal Boards', 'TMs'],
+    allIds: [[1, 'Personal Boards'], [2, 'TMs']],
   },
   Boards: {
     byId: {

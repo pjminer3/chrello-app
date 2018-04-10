@@ -24,17 +24,25 @@ export const fetchCategoriesRequest = () => {
 export const fetchCategoriesSuccess = (jsonData) => {
   console.log('Inside fetchCategoriesSuccess');
   console.log('DATA: ', jsonData); 
+  // jsonData = [{'categoryName': 'Personal Boards', 'id': 1}, {'categoryName': 'TMs', 'id': 2}]
 
   // create initial category state provided by DB
   const dbState = { byId: {}, allIds: [] };
+
+  // populate initial category state
   jsonData.forEach(obj => {
-    let { categoryName } = obj;
-    dbState.byId[categoryName] = {
-      id: categoryName,
+    let { id, categoryName } = obj;
+
+    dbState.byId[id] = {
+      id,
+      categoryName,
       boards: [],
     };
-    dbState.allIds.push(categoryName);
+
+    dbState.allIds.push([categoryName, id]);
   });
+
+  console.log(dbState);
 
   return {
     type: FETCH_CATEGORIES_SUCCESS,
@@ -59,6 +67,7 @@ export const fetchCategories = () => {
     try {
       // on success
       let response = await fetch('http://127.0.0.1:8080/api/category');
+      // response = [{'categoryName': 'Personal Boards', 'id': 1}, {'categoryName': 'TMs', 'id': 2}]
       let data = await response.json();
 
       dispatch(fetchCategoriesSuccess(data));

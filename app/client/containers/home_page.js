@@ -23,7 +23,7 @@ class HomePage extends Component {
         <HeaderBar type="HomePage" />
         <div className="category-container">
           {/* Renders each category in Redux State */}
-          {this.props.categories.allIds.map(category => <Category key={category} categoryName={category} boards={this.props.categories.byId[category].boards} />)}
+          {this.props.categories.allIds.map(category => <Category key={category[1]} categoryName={category[0]} boards={this.props.categories.byId[category[1]].boards} />)}
         </div>
       </div>
     );
@@ -38,7 +38,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCategories: fetchCategories }, dispatch);
+  return bindActionCreators({ fetchCategories }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
