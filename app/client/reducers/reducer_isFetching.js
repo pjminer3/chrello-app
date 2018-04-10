@@ -8,6 +8,8 @@ import {
 } from '../actions';
 
 export default (state = false, action) => {
+    
+
     switch (action.type) {
         case FETCH_CATEGORIES_REQUEST:
         case FETCH_BOARDS_REQUEST:

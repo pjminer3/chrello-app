@@ -36,12 +36,10 @@ export default function (state = { byId: {}, allIds: [] }, action) {
       return action.categories;
     
     case FETCH_BOARDS_SUCCESS:
-      console.log('****** INSIDE REDUCER: ', payload);
-
+      // add boards to proper category arrays
       for (let i = 0; i < payload.length; i++) {
         let board = payload[i];
-        state.byId[board.categoryName].boards.push(board.boardName);
-        console.log('********** ', board);
+        state.byId[board.categoryId].boards.push([board.boardName, board.boardId]);
       } 
       return Object.assign({}, state);
 

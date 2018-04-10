@@ -45,19 +45,20 @@ export default function (state = { byId: {}, allIds: [] }, action) {
 
       return newState;
 
-      case FETCH_BOARDS_SUCCESS:
-        newState = {byId: {}, allIds: []}
+    case FETCH_BOARDS_SUCCESS:
+      // newState = {byId: {}, allIds: []}
 
-        payload.forEach( board => {
-          newState.byId[board.boardName] = {
-            id: board.boardName,
-            category: board.categoryName,
-            lists: [],
-          }
-          newState.allIds.push(board.boardName);
-        })
-        return newState;
-        // TODO: FIGURE OUT WHY THESE AREN'T RENDERING
+      payload.forEach( board => {
+        state.byId[board.boardId] = {
+          id: board.boardId,
+          boardName: board.boardName,
+          categoryId: board.categoryId,
+          lists: [],
+        }
+        state.allIds.push([board.boardName, board.boardId]);
+      });
+      return Object.assign({}, state);
+      // TODO: FIGURE OUT WHY THESE AREN'T RENDERING, but render after clicking 'create new board'
 
     default:
       return state;

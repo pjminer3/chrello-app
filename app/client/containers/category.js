@@ -25,7 +25,7 @@ class Category extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchBoards(this.props.id);
+    this.props.fetchBoards({categoryId: this.props.id, categoryName: this.props.categoryName,});
   }
 
   handleNameChange(event) {

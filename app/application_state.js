@@ -15,17 +15,18 @@ const applicationState = {
       2: {
         id: 2,
         categoryName: 'TMs',
-        boards: ['Danny', 'Kirk'],
+        boards: [['Danny', 1], ['Kirk', 2]],
       },
     },
-    allIds: [[1, 'Personal Boards'], [2, 'TMs']],
+    allIds: [['Personal Boards', 1], ['TMs', 2]],
   },
   Boards: {
     byId: {
-      Danny: {
-        id: 'Danny',
-        category: 'TMs',
-        lists: ['Chrello Board', 'Toy Problems'],
+      1: {
+        id: 1,
+        boardName: 'Danny',
+        categoryId: 2,
+        lists: [['Chrello Board', 1], ['Toy Problems', 2]],
       },
       Kirk: {
         id: 'Kirk',
@@ -33,23 +34,42 @@ const applicationState = {
         lists: [],
       },
     },
-    allIds: ['Danny', 'Kirk'],
+    allIds: [['Danny', 1], ['Kirk', 2]],
   },
   Lists: {
     byId: {
-      'Chrello Board': {
-        id: 'Chrello Board',
-        board: 'Danny',
-        cards: ['card1', 'card2'],
+      1: {
+        id: 1,
+        listName: 'Chrello Board',
+        boardId: 1,
+        cards: [1, 2], // might have to add card content here as well
       },
-      'Toy Problems': {
-        id: 'Toy Problems',
-        board: 'Danny',
-        cards: ['card3'],
+      2: {
+        id: 2,
+        listName: 'Toy Problems',
+        boardId: 'Danny',
+        cards: [3],
       },
     },
-    allIds: ['list1', 'list2'],
+    allIds: [['Chrello Board', 1], ['Toy Problems', 2],
   },
+  Cards: {
+    byId: {
+      1: {
+        id: 1,
+        cardContent: 'Card1'
+      },
+      2: {
+        id: 2,
+        cardContent: 'Card2',
+      },
+      3: {
+        id: 3,
+        cardContent: 'Card3',
+      }
+    },
+    allIds: [1, 2, 3] 
+  }
 };
 
 export default applicationState;

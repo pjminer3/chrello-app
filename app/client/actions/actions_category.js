@@ -13,17 +13,13 @@ export const createNewCategory = (categoryName) => {
 };
 
 // to show activity indicator
-export const fetchCategoriesRequest = () => {
-  console.log('inside fetchCategoriesRequest');
-  
+export const fetchCategoriesRequest = () => {  
   return {
     type: FETCH_CATEGORIES_REQUEST
   }};
 
 // on successful fetch
 export const fetchCategoriesSuccess = (jsonData) => {
-  console.log('Inside fetchCategoriesSuccess');
-  console.log('DATA: ', jsonData); 
   // jsonData = [{'categoryName': 'Personal Boards', 'id': 1}, {'categoryName': 'TMs', 'id': 2}]
 
   // create initial category state provided by DB
@@ -42,8 +38,6 @@ export const fetchCategoriesSuccess = (jsonData) => {
     dbState.allIds.push([categoryName, id]);
   });
 
-  console.log(dbState);
-
   return {
     type: FETCH_CATEGORIES_SUCCESS,
     categories: dbState,
@@ -51,7 +45,6 @@ export const fetchCategoriesSuccess = (jsonData) => {
 
 // on failed fetch
 export const fetchCategoriesFailure = (err) => {
-  console.log('Inside fetchCategoriesFailure');
   return {
     type: FETCH_CATEGORIES_FAILURE,
     error: err,
