@@ -37,7 +37,7 @@ class Category extends Component {
     event.preventDefault();
     this.props.createNewBoard(this.state.newBoard, this.props.id);
     /************************************************************************** */
-    dbCreateBoard(this.props.id, this.state.newBoard); // TODO: REPLACE 1 WITH REAL BOARD ID
+    dbCreateBoard(this.props.id, this.state.newBoard); // TODO: REPLACE 1 WITH REAL CATEGORY ID... WHICH I THINK IS DONE
     /************************************************************************** */
     this.setState({ newBoard: '', show: false });
   }
