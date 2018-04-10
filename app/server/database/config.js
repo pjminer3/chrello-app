@@ -10,7 +10,6 @@ const CreateModels = (sequelizeConnection) => {
   const Board = sequelizeConnection.define('board', {
     boardName: {
       type: Sequelize.STRING,
-      primaryKey: true,
     },
   });
 

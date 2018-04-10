@@ -3,15 +3,15 @@ import { Board } from '../database';
 const board = {
     get: function(request, response) {
         console.log('board.get was called')
-        const categoryCategoryName = request.params.categoryId;
+        const categoryId = request.params.categoryId;
 
-        console.log('INSIDE BOARD CONTROLLER: ', categoryCategoryName);
+        console.log('INSIDE BOARD CONTROLLER: ', categoryId);
 
         // find all the boards for the specified category
         Board.findAll({
             attributes: ['boardName'],
             where: {
-                categoryCategoryName
+                categoryId
             }
         })
           .then((boards) => {
@@ -25,10 +25,10 @@ const board = {
 
     post: function(request, response) {
         console.log('board.post was called')
-        const { params: { categoryCategoryName } } = request;
+        const { params: { categoryId } } = request;
         let { params: { boardName } } = request;
 
-        Board.create({ boardName, categoryCategoryName })
+        Board.create({ boardName, categoryId })
           .then(() => {
               console.log('Board successfully created');
               response.sendStatus(201);
