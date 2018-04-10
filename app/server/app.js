@@ -11,7 +11,6 @@ const app = express();
 const publicPath = express.static(path.join(__dirname, '../')); // sets the publicPath equal to the build folder
 const indexPath = path.join(__dirname, '../index.html'); // sets indexPath equal to the index.html file in the build folder
 
-// DANNY! WHAT DOES THIS DO!
 app.use(publicPath);
 
 // logging and parsing
@@ -23,17 +22,6 @@ app.use('/api', router);
 
 app.get("/", (request, response) => {
   response.sendFile(indexPath);
-});
-
-// to catch any refreshes/back button pushes TODO: FIX THIS
-app.get("/*", (request, response) => {
-  console.log(request.params);
-  response.sendFile(indexPath, (err) => {
-    if (err) {
-      // response.status(500).send(err);
-      throw new Error('Shit doesnt work');
-    }
-  });
 });
 
 export default app;

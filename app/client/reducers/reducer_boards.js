@@ -1,6 +1,6 @@
 // this reducer controls board state and has mulitple cases to catch different types of actions
 
-import { NEW_BOARD, NEW_LIST } from '../actions';
+import { NEW_BOARD, NEW_LIST, FETCH_BOARDS_FAILURE, FETCH_BOARDS_SUCCESS } from '../actions';
 
 export default function (state = { byId: {}, allIds: [] }, action) {
   const { payload } = action;
@@ -44,6 +44,20 @@ export default function (state = { byId: {}, allIds: [] }, action) {
       newState.byId[payload.boardName].lists = [payload.listName, ...lists];
 
       return newState;
+
+      case FETCH_BOARDS_SUCCESS:
+        newState = {byId: {}, allIds: []}
+
+        payload.forEach( board => {
+          newState.byId[board.boardName] = {
+            id: board.boardName,
+            category: board.categoryName,
+            lists: [],
+          }
+          newState.allIds.push(board.boardName);
+        })
+        return newState;
+        // TODO: FIGURE OUT WHY THESE AREN'T RENDERING
 
     default:
       return state;

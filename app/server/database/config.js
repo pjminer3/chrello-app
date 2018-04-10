@@ -4,18 +4,21 @@ const CreateModels = (sequelizeConnection) => {
   const Category = sequelizeConnection.define('category', {
     categoryName: {
       type: Sequelize.STRING,
+      primaryKey: true,
     },
   });
 
   const Board = sequelizeConnection.define('board', {
     boardName: {
       type: Sequelize.STRING,
+      primaryKey: true,
     },
   });
 
   const List = sequelizeConnection.define('list', {
     listName: {
       type: Sequelize.STRING,
+      primaryKey: true,
     },
   });
 
@@ -47,3 +50,4 @@ const CreateModels = (sequelizeConnection) => {
 };
 
 export default CreateModels;
+

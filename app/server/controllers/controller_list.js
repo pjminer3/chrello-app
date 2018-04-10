@@ -7,7 +7,7 @@ const list = {
 
         List.findAll({
             where: { boardId },
-            attributes: ['listName', 'id']
+            attributes: ['listName']
         })
           .then(lists => {
               response.json(lists);
