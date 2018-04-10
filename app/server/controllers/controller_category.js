@@ -5,7 +5,7 @@ const category = {
         console.log('category.get was called');
         
         Category.findAll({
-            attributes: ['categoryName']
+            attributes: ['categoryName', 'id']
         })
           .then(function(categories) {
               response.json(categories);

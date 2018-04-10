@@ -4,7 +4,6 @@ const CreateModels = (sequelizeConnection) => {
   const Category = sequelizeConnection.define('category', {
     categoryName: {
       type: Sequelize.STRING,
-      primaryKey: true,
     },
   });
 
