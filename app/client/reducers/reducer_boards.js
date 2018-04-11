@@ -2,6 +2,8 @@
 
 import { NEW_BOARD, NEW_LIST, FETCH_BOARDS_FAILURE, FETCH_BOARDS_SUCCESS, CLEAR_BOARDS } from '../actions';
 
+let boardId = 4;
+
 export default function (state = { byId: {}, allIds: [] }, action) {
   const { payload } = action;
   let newState;
@@ -16,17 +18,18 @@ export default function (state = { byId: {}, allIds: [] }, action) {
         return state;
       }
 
-      // add board to boards application state
-      return Object.assign({}, state, {
-        byId: Object.assign({}, state.byId, {
-          [payload.boardName]: {
-            id: payload.boardName,
-            categoryId: payload.categoryId,
-            lists: [],
-          },
-        }),
-        allIds: [payload.boardName, ...state.allIds],
-      });
+      newState = Object.assign({}, state);
+      newState.byId[boardId] = {
+        id: boardId,
+        boardName: payload.boardName,
+        categoryId: payload.categoryId,
+        lists: [],
+      };
+      newState.allIds = [payload.boardName, ...newState.allIds];
+
+      boardId++;
+
+      return newState;
 
     case NEW_LIST:
       // payload = { listName, boardName }

@@ -7,6 +7,8 @@ import {
   FETCH_BOARDS_SUCCESS,
  } from '../actions';
 
+let boardId = 4;
+
 // initiate application state with 'Personal Boards' category and no boards
 export default function (state = { byId: {}, allIds: [] }, action) {
   const { payload } = action;
@@ -28,7 +30,8 @@ export default function (state = { byId: {}, allIds: [] }, action) {
     case NEW_BOARD:
       // payload = {boardName, categoryName}
 
-      state.byId[payload.categoryId].boards.push(payload.boardName);
+      state.byId[payload.categoryId].boards.push([payload.boardName, boardId]);
+      boardId++;
 
       return Object.assign({}, state);
 

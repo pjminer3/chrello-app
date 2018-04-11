@@ -16,7 +16,6 @@ export default (state = false, action) => {
     case FETCH_BOARDS_SUCCESS:
     case FETCH_CATEGORIES_FAILURE:
     case FETCH_BOARDS_FAILURE:
-      console.log('TODO: 1) Figure out why boards only render when you click "New Board", and 2) Make boardnames render properly'); 
       return false;
     default: 
       return state;
