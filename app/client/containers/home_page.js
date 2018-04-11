@@ -23,7 +23,7 @@ class HomePage extends Component {
         <HeaderBar type="HomePage" />
         <div className="category-container">
           {/* Renders each category in Redux State */}
-          {this.props.categories.allIds.map(([categoryName, categoryId]) => <Category key={categoryId} id={categoryId} categoryName={categoryName}  boards={this.props.categories.byId[categoryId].boards} />)}
+          {this.props.categories.allIds.map(([categoryName, categoryId]) => <Category key={categoryId} categoryId={categoryId} categoryName={categoryName}  boards={this.props.categories.byId[categoryId].boards} />)}
         </div>
       </div>
     );

@@ -25,7 +25,7 @@ class Category extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchBoards({categoryId: this.props.id, categoryName: this.props.categoryName,});
+    this.props.fetchBoards({categoryId: this.props.categoryId, categoryName: this.props.categoryName});
   }
 
   handleNameChange(event) {
@@ -33,12 +33,10 @@ class Category extends Component {
   }
 
   // this calls the action creator with boardName and category id
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault();
-    this.props.createNewBoard(this.state.newBoard, this.props.id);
-    /************************************************************************** */
-    dbCreateBoard(this.props.id, this.state.newBoard); // TODO: REPLACE 1 WITH REAL CATEGORY ID... WHICH I THINK IS DONE
-    /************************************************************************** */
+    await dbCreateBoard(this.props.categoryId, this.state.newBoard);
+    this.props.createNewBoard(this.state.newBoard, this.props.categoryId)
     this.setState({ newBoard: '', show: false });
   }
 
@@ -63,7 +61,7 @@ class Category extends Component {
         <div className="panel-body">
           <div className="row">
             <div className="board-container">
-              {this.props.categories.byId[this.props.id].boards.map( ([boardName, boardId]) => <BoardIcon categoryName={this.props.categoryName} categoryId={this.props.id} boardName={boardName} key={boardId} boardId={boardId} />) }
+              {this.props.categories.byId[this.props.categoryId].boards.map( ([boardName, boardId]) => <BoardIcon categoryName={this.props.categoryName} categoryId={this.props.categoryId} boardName={boardName} key={boardId} boardId={boardId} />) }
             </div>
 
             <Button

@@ -1,6 +1,6 @@
 // this reducer controls board state and has mulitple cases to catch different types of actions
 
-import { NEW_BOARD, NEW_LIST, FETCH_BOARDS_FAILURE, FETCH_BOARDS_SUCCESS } from '../actions';
+import { NEW_BOARD, NEW_LIST, FETCH_BOARDS_FAILURE, FETCH_BOARDS_SUCCESS, CLEAR_BOARDS } from '../actions';
 
 export default function (state = { byId: {}, allIds: [] }, action) {
   const { payload } = action;
@@ -9,7 +9,7 @@ export default function (state = { byId: {}, allIds: [] }, action) {
 
   switch (action.type) {
     case NEW_BOARD:
-      // payload = { boadName, categoryId }
+      // payload = { boardName, categoryId }
 
       // edge case: duplicate boardName
       if (state.byId[payload.boardName]) {
@@ -17,7 +17,7 @@ export default function (state = { byId: {}, allIds: [] }, action) {
       }
 
       // add board to boards application state
-      return {
+      return Object.assign({}, state, {
         byId: Object.assign({}, state.byId, {
           [payload.boardName]: {
             id: payload.boardName,
@@ -26,7 +26,7 @@ export default function (state = { byId: {}, allIds: [] }, action) {
           },
         }),
         allIds: [payload.boardName, ...state.allIds],
-      };
+      });
 
     case NEW_LIST:
       // payload = { listName, boardName }
@@ -59,6 +59,8 @@ export default function (state = { byId: {}, allIds: [] }, action) {
       });
       return Object.assign({}, state);
       // TODO: FIGURE OUT WHY THESE AREN'T RENDERING, but render after clicking 'create new board'
+
+    
 
     default:
       return state;
