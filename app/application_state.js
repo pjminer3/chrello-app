@@ -51,7 +51,7 @@ const applicationState = {
         cards: [3],
       },
     },
-    allIds: [['Chrello Board', 1], ['Toy Problems', 2],
+    allIds: [['Chrello Board', 1], ['Toy Problems', 2],]
   },
   Cards: {
     byId: {
@@ -68,7 +68,7 @@ const applicationState = {
         cardContent: 'Card3',
       }
     },
-    allIds: [1, 2, 3] 
+    allIds: [1, 2, 3],
   }
 };
 

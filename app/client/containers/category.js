@@ -63,7 +63,7 @@ class Category extends Component {
         <div className="panel-body">
           <div className="row">
             <div className="board-container">
-              {this.props.boards.map( boardName => <BoardIcon categoryName={this.props.categoryName} categoryId={this.props.id} boardName={boardName} key={boardName} />) }
+              {this.props.categories.byId[this.props.id].boards.map( ([boardName, boardId]) => <BoardIcon categoryName={this.props.categoryName} categoryId={this.props.id} boardName={boardName} key={boardId} boardId={boardId} />) }
             </div>
 
             <Button
@@ -95,11 +95,14 @@ class Category extends Component {
 }
 
 function mapStateToProps(state) {
-  return { boards: state.Boards };
+  return { 
+    boards: state.Boards,
+    categories: state.Categories
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ createNewBoard, fetchBoards }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(Category);
+export default connect(mapStateToProps, mapDispatchToProps)(Category);
