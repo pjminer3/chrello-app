@@ -8,6 +8,7 @@ import {
  } from '../actions';
 
 let boardId = 4;
+let categoryId = 3; 
 
 // initiate application state with 'Personal Boards' category and no boards
 export default function (state = { byId: {}, allIds: [] }, action) {
@@ -15,17 +16,12 @@ export default function (state = { byId: {}, allIds: [] }, action) {
 
   switch (action.type) {
     case NEW_CATEGORY:
-      // payload = categoryName  
-
-      // edge case if its a duplicate category name
-      if (state.byId[payload]) {
-        return state;
-      }
+      // payload = { categoryName, categoryId }
 
       // add new Category to total categories
       return {
-        byId: Object.assign({}, state.byId, { [payload]: { id: payload, boards: [] } }),
-        allIds: [...state.allIds, action.payload],
+        byId: Object.assign({}, state.byId, { [payload.categoryId]: { id: payload.categoryId, categoryName: payload.categoryName, boards: [] } }),
+        allIds: [...state.allIds, [payload.categoryName, payload.categoryId]],
       };
     case NEW_BOARD:
       // payload = {boardName, categoryName}

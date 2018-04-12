@@ -27,10 +27,10 @@ class Header extends Component {
   }
 
   // Creates a new Category on home page and resets input value
-  callNewCategoryActionCreator(event) {
+  async callNewCategoryActionCreator(event) {
     event.preventDefault();
+    await dbCreateNewCategory(this.state.nameInput);
     this.props.createNewCategory(this.state.nameInput);
-    dbCreateNewCategory(this.state.nameInput);
     this.setState({ nameInput: '' });
   }
 

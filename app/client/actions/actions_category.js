@@ -3,10 +3,12 @@ export const FETCH_CATEGORIES_REQUEST = 'FETCHING_CATEGORIES_REQUEST';
 export const FETCH_CATEGORIES_SUCCESS = 'FETCHING_CATEGORIES_SUCCESS';
 export const FETCH_CATEGORIES_FAILURE = 'FETCHING_CATEGORIES_FAILURE';
 
+let categoryId = 2;
 export const createNewCategory = (categoryName) => {
+  categoryId++;
   return {
     type: NEW_CATEGORY,
-    payload: categoryName,
+    payload: {categoryName, categoryId },
   };
 };
 
