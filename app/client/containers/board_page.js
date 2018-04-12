@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import Header from './header';
 import List from './list';
-import fetchLists from '../actions';
+import { fetchLists } from '../actions';
 
 // eslint-disable-next-line
 class BoardPage extends Component {
@@ -16,7 +16,8 @@ class BoardPage extends Component {
   }
 
   componentDidMount() {
-
+    console.log(typeof fetchLists);
+    this.props.fetchLists();
   }
 
   render() {
@@ -42,7 +43,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  bind
+  return bindActionCreators({ fetchLists }, dispatch);
 }
 
-export default connect(mapStateToProps)(BoardPage);
+export default connect(mapStateToProps, mapDispatchToProps)(BoardPage);

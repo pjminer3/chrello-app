@@ -53,6 +53,7 @@ export {
   FETCH_BOARDS_FAILURE,
   NEW_BOARD,
   createNewList,
+  fetchLists,
   NEW_LIST,
   createNewCard,
   NEW_CARD,

@@ -53,9 +53,10 @@ export const fetchListsFailure = (err) => {
 // actual fetching function
 export const fetchLists = () => {
   // FINISH UP THE REDUCERS FOR THE BELOW ACTIONS
+  console.log('INSIDE FETCH LISTS');
   return async (dispatch) => {
     // trigger the spinner to tell UI we're fetching data
-    dispatch(fetchListsRequest());
+    // dispatch(fetchListsRequest());
     // try {
     //   // on success
     //   let response = await fetch('http://127.0.0.1:8080/api/category');
