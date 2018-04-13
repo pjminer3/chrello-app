@@ -12,7 +12,6 @@ export const createNewList = (listName, boardName) => {
   
 // to show activity indicator
 export const fetchListsRequest = () => { 
-  console.log('FETCHING LISTS REQUEST'); 
   return {
     type: FETCH_LISTS_REQUEST
   }};
@@ -51,22 +50,24 @@ export const fetchListsFailure = (err) => {
 }
 
 // actual fetching function
-export const fetchLists = () => {
+export const fetchLists = (boardId) => {
   // FINISH UP THE REDUCERS FOR THE BELOW ACTIONS
   console.log('INSIDE FETCH LISTS');
   return async (dispatch) => {
     // trigger the spinner to tell UI we're fetching data
-    // dispatch(fetchListsRequest());
-    // try {
-    //   // on success
-    //   let response = await fetch('http://127.0.0.1:8080/api/category');
-    //   // response = [{'categoryName': 'Personal Boards', 'id': 1}, {'categoryName': 'TMs', 'id': 2}]
-    //   let data = await response.json();
+    dispatch(fetchListsRequest());
+    try {
+      // on success
+      console.log(boardId);
+      let response = await fetch('http://127.0.0.1:8080/api/list/${boardId}');
+      // response = [{'categoryName': 'Personal Boards', 'id': 1}, {'categoryName': 'TMs', 'id': 2}]
+      let data = await response.json();
+      console.log('List Data: ', data);
 
-    //   dispatch(fetchListsSuccess(data));
-    // } catch(err) {
-    //   // on failure
-    //   dispatch(fetchListsFailure(err));
-    // }
+      // dispatch(fetchListsSuccess(data));
+    } catch(err) {
+      // on failure
+      dispatch(fetchListsFailure(err));
+    }
   }
 }

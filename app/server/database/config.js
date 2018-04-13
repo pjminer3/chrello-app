@@ -16,7 +16,6 @@ const CreateModels = (sequelizeConnection) => {
   const List = sequelizeConnection.define('list', {
     listName: {
       type: Sequelize.STRING,
-      primaryKey: true,
     },
   });
 

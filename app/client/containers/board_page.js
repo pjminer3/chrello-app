@@ -17,14 +17,16 @@ class BoardPage extends Component {
 
   componentDidMount() {
     console.log(typeof fetchLists);
-    this.props.fetchLists();
+    const [boardName, boardId] = this.props.activeBoard;
+    this.props.fetchLists(boardId);
   }
 
   render() {
+    const [boardName, boardId] = this.props.activeBoard;
     return (
       <div>
-        <Header activeBoard={this.props.activeBoard[0]} />
-        <div className="board-title">{this.props.activeBoard[0]}</div>
+        <Header activeBoard={boardName} />
+        <div className="board-title">{boardName}</div>
         <div className="lists-container">
           {this.props.listIds.map(listId => <List listId={listId} list={this.props.listItems[listId]} key={listId} />)}
         </div>
