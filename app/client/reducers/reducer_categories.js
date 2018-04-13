@@ -1,6 +1,6 @@
 // this reducer will control board state and will have mulitple cases to catch different types of actions
 import {
-  NEW_CATEGORY,
+  // NEW_CATEGORY,
   FETCH_CATEGORIES_SUCCESS,
   FETCH_CATEGORIES_FAILURE,
   NEW_BOARD,
@@ -15,14 +15,14 @@ export default function (state = { byId: {}, allIds: [] }, action) {
   const { payload } = action;
 
   switch (action.type) {
-    case NEW_CATEGORY:
-      // payload = { categoryName, categoryId }
+    // case NEW_CATEGORY:
+    //   // payload = { categoryName, categoryId }
 
-      // add new Category to total categories
-      return {
-        byId: Object.assign({}, state.byId, { [payload.categoryId]: { id: payload.categoryId, categoryName: payload.categoryName, boards: [] } }),
-        allIds: [...state.allIds, [payload.categoryName, payload.categoryId]],
-      };
+    //   // add new Category to total categories
+    //   return {
+    //     byId: Object.assign({}, state.byId, { [payload.categoryId]: { id: payload.categoryId, categoryName: payload.categoryName, boards: [] } }),
+    //     allIds: [...state.allIds, [payload.categoryName, payload.categoryId]],
+    //   };
     case NEW_BOARD:
       // payload = {boardName, categoryName}
 

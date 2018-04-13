@@ -1,10 +1,8 @@
 
 import {
-  NEW_CATEGORY,
   FETCH_CATEGORIES_SUCCESS,
   FETCH_CATEGORIES_FAILURE,
   FETCH_CATEGORIES_REQUEST,
-  createNewCategory,
   fetchCategories,
   fetchCategoriesSuccess,
   postCategory,
@@ -42,11 +40,9 @@ import {
 
 
 export {
-  createNewCategory,
   fetchCategories,
   fetchCategoriesSuccess,
   postCategory,
-  NEW_CATEGORY,
   FETCH_CATEGORIES_FAILURE, 
   FETCH_CATEGORIES_REQUEST,
   FETCH_CATEGORIES_SUCCESS,

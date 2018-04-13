@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { createNewCategory, createNewList, postCategory } from '../actions';
-import dbCreateNewCategory from '../helpers/createCategory';
+import { createNewList, postCategory } from '../actions';
 import dbCreateNewList from '../helpers/createList';
 
 class Header extends Component {
@@ -29,8 +28,6 @@ class Header extends Component {
   // Creates a new Category on home page and resets input value
   async callNewCategoryActionCreator(event) {
     event.preventDefault();
-    // await dbCreateNewCategory(this.state.nameInput);
-    // this.props.createNewCategory(this.state.nameInput);
     await this.props.postCategory(this.state.nameInput);
     this.setState({ nameInput: '' });
   }
@@ -78,7 +75,7 @@ class Header extends Component {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createNewCategory, createNewList, postCategory }, dispatch);
+  return bindActionCreators({ createNewList, postCategory }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(Header);
