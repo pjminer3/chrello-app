@@ -1,6 +1,6 @@
 // this reducer will control board state and will have mulitple cases to catch different types of actions
 import {
-  // NEW_CATEGORY,
+  UPDATE_CATEGORIES,
   FETCH_CATEGORIES_SUCCESS,
   FETCH_CATEGORIES_FAILURE,
   NEW_BOARD,
@@ -15,14 +15,6 @@ export default function (state = { byId: {}, allIds: [] }, action) {
   const { payload } = action;
 
   switch (action.type) {
-    // case NEW_CATEGORY:
-    //   // payload = { categoryName, categoryId }
-
-    //   // add new Category to total categories
-    //   return {
-    //     byId: Object.assign({}, state.byId, { [payload.categoryId]: { id: payload.categoryId, categoryName: payload.categoryName, boards: [] } }),
-    //     allIds: [...state.allIds, [payload.categoryName, payload.categoryId]],
-    //   };
     case NEW_BOARD:
       // payload = {boardName, categoryName}
 
@@ -40,6 +32,25 @@ export default function (state = { byId: {}, allIds: [] }, action) {
         let board = payload[i];
         state.byId[board.categoryId].boards.push([board.boardName, board.boardId]);
       } 
+      return Object.assign({}, state);
+
+    case UPDATE_CATEGORIES:
+      // payload = [{ categoryName, id}];
+      console.log('inside UPDATE CATEGORIES reducer');
+
+      payload.forEach(category => {
+        console.log(category);
+        if (!state.byId[category.id]) {
+          console.log('adding new category: ', category.categoryName);
+          state.byId[category.id] = {
+            id: category.id,
+            categoryName: category.categoryName,
+            boards: [],
+          };
+          state.allIds.push([category.categoryName, category.id]);
+        }
+      });
+
       return Object.assign({}, state);
 
     default:

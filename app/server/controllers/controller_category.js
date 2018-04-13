@@ -7,7 +7,7 @@ const category = {
         Category.findAll({
             attributes: ['categoryName', 'id']
         })
-          .then(function(categories) {
+          .then(categories => {
               response.json(categories);
           })
           .catch(err => {
@@ -21,19 +21,13 @@ const category = {
         const { params: {categoryName } } = request;
 
         Category.create( { categoryName } )
-          .then((category) => {
-              console.log('Successfully added category');
+          .then(category =>
               // Get request to DB to send back all Categories
             Category.findAll({
                 attributes: ['categoryName', 'id']
-            })
-              .then(function(categories) {
-                  response.json(categories);
-              })
-              .catch(err => {
-                  console.log('There was an error in getting category names after creating a new one: ', err);
-                  response.sendStatus(500);
-              });
+            }))
+          .then(categories => {
+            response.json(categories);
           })
           .catch((err) => {
               console.log('Error in creating new Category: ', err);

@@ -1,17 +1,7 @@
-// export const NEW_CATEGORY = 'NEW_CATEGORY';
 export const FETCH_CATEGORIES_REQUEST = 'FETCHING_CATEGORIES_REQUEST';
 export const FETCH_CATEGORIES_SUCCESS = 'FETCHING_CATEGORIES_SUCCESS';
 export const FETCH_CATEGORIES_FAILURE = 'FETCHING_CATEGORIES_FAILURE';
-
-
-// let categoryId = 2;
-// export const createNewCategory = (categoryName) => {
-//   // categoryId++;
-//   return {
-//     type: NEW_CATEGORY,
-//     payload: {categoryName, /* categoryId */ },
-//   };
-// };
+export const UPDATE_CATEGORIES = 'UPDATE_CATEGORIES';
 
 // to show activity indicator
 export const fetchCategoriesRequest = () => {  
@@ -43,6 +33,11 @@ export const fetchCategoriesSuccess = (jsonData) => {
     type: FETCH_CATEGORIES_SUCCESS,
     categories: dbState,
 }};
+
+export const updateCategories = (jsonData) => {
+  console.log('Inside UPDATE CATEGORIES action creator')
+  return {type: UPDATE_CATEGORIES, payload: jsonData};
+}
 
 // on failed fetch
 export const fetchCategoriesFailure = (err) => {
@@ -80,7 +75,7 @@ export const postCategory = (categoryName) => {
         method: 'POST',
       });
       let data = await response.json();
-      dispatch(fetchCategoriesSuccess(data));
+      dispatch(updateCategories(data));
     } catch(err) {
       console.log('err creating post request');
     }

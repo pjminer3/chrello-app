@@ -24,6 +24,10 @@ class Category extends Component {
     this.handleNameChange = this.handleNameChange.bind(this);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log('updated component');
+  }
+
   componentDidMount() {
     this.props.fetchBoards({categoryId: this.props.categoryId, categoryName: this.props.categoryName});
   }
@@ -94,7 +98,7 @@ class Category extends Component {
 
 function mapStateToProps(state) {
   return { 
-    boards: state.Boards,
+    // boards: state.Boards,
     categories: state.Categories
   };
 }
