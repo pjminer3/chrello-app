@@ -30,7 +30,7 @@ class Header extends Component {
   async callNewCategoryActionCreator(event) {
     event.preventDefault();
     await dbCreateNewCategory(this.state.nameInput);
-    this.props.createNewCategory(this.state.nameInput);
+    // this.props.createNewCategory(this.state.nameInput);
     this.setState({ nameInput: '' });
   }
 
