@@ -7,6 +7,7 @@ import {
   createNewCategory,
   fetchCategories,
   fetchCategoriesSuccess,
+  postCategory,
 } from './actions_category';
 
 import {
@@ -44,6 +45,7 @@ export {
   createNewCategory,
   fetchCategories,
   fetchCategoriesSuccess,
+  postCategory,
   NEW_CATEGORY,
   FETCH_CATEGORIES_FAILURE, 
   FETCH_CATEGORIES_REQUEST,

@@ -70,3 +70,23 @@ export const fetchCategories = () => {
     }
   }
 }
+
+export const postCategory = (categoryName) => {
+  console.log('Inside postCategory');
+  return async (dispatch) => {
+    // dispatch(postCategoryRequest());
+    try {
+      console.log('inside the try')
+      let response = await fetch(`http://127.0.0.1:8080/api/category/${categoryName}`, {
+        method: 'POST',
+      });
+      let data = await response.json();
+
+      console.log('Data from postCategory: ', data);
+      dispatch(fetchCategoriesSuccess(data));
+    } catch(err) {
+      console.log('err creating post request');
+      // dispatch(postCategoryFailure());
+    }
+  }
+}
