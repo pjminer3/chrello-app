@@ -22,12 +22,13 @@ class BoardPage extends Component {
 
   render() {
     const [boardName, boardId] = this.props.activeBoard;
+    console.log(this.props.lists);
     return (
       <div>
         <Header activeBoard={boardName} />
         <div className="board-title">{boardName}</div>
         <div className="lists-container">
-          {this.props.listIds.map(listId => <List listId={listId} list={this.props.listItems[listId]} key={listId} />)}
+          {this.props.lists.map(list => <List listId={list.id} list={list.listName} key={list.id} />)}
         </div>
       </div>
     );
@@ -38,8 +39,9 @@ function mapStateToProps(state) {
   // Map the active board, that board's lists, and all lists to props
   return {
     activeBoard: state.ActiveBoard,
-    listIds: state.Boards.byId[state.ActiveBoard[1]].lists,
-    listItems: state.Lists.byId,
+    // listIds: state.Boards.byId[state.ActiveBoard[1]].lists,
+    // listItems: state.Lists.byId,
+    lists: state.Lists,
   };
 }
 

@@ -8,7 +8,6 @@ import {
  } from '../actions';
 
 let boardId = 4;
-let categoryId = 3; 
 
 // initiate application state with 'Personal Boards' category and no boards
 export default function (state = { byId: {}, allIds: [] }, action) {
@@ -61,5 +60,3 @@ export default function (state = { byId: {}, allIds: [] }, action) {
       return state;
   }
 }
-
-// TODO: CREATE THIS REDUCER 

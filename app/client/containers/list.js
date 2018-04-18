@@ -7,6 +7,7 @@ import { createNewCard, deleteCard } from '../actions';
 import dbCreateNewCard from '../helpers/createCard';
 
 class List extends Component {
+  // props: listId={list.id} list={list.listName}
   constructor(props) {
     super(props);
 
@@ -16,6 +17,10 @@ class List extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidMount() {
+    // fetch all cards for specified list Id
   }
 
   handleSubmit(event) {
@@ -37,7 +42,7 @@ class List extends Component {
         <div className="list-name">{this.props.listId}</div>
         <div className="cards">
           {/* existing cards */}
-          {this.props.list.cards.map((card, idx) => {
+          {/* {this.props.list.cards.map((card, idx) => {
             return (
               <Card
                 cardContent={card}
@@ -47,7 +52,7 @@ class List extends Component {
                 listId={this.props.listId}
               />
             );
-          })}
+          })} */}
         </div>
         {/* new card */}
         <form onSubmit={this.handleSubmit}>

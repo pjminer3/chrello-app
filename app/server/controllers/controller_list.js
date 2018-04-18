@@ -3,11 +3,11 @@ import { List } from '../database';
 const list = {
     get: function(request, response) {
         console.log('list.get was called');
-        const { params: {boardId } } = request;
+        const { params: { boardId } } = request;
 
         List.findAll({
             where: { boardId },
-            attributes: ['listName']
+            attributes: ['listName', 'id'],
         })
           .then(lists => {
               response.json(lists);

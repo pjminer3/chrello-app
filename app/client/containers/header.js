@@ -14,7 +14,6 @@ class Header extends Component {
       nameInput: '',
     };
     
-
     this.updateState = this.updateState.bind(this);
     this.callNewCategoryActionCreator = this.callNewCategoryActionCreator.bind(this);
     this.callNewListActionCreator = this.callNewListActionCreator.bind(this);
