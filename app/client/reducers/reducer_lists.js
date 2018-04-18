@@ -1,5 +1,5 @@
 // this reducer will control list state and will have mulitple cases to catch different types of actions
-import { NEW_LIST, NEW_CARD, DELETE_CARD, FETCH_LISTS_SUCCESS } from '../actions';
+import { NEW_LIST, NEW_CARD, DELETE_CARD, FETCH_LISTS_SUCCESS, FETCH_CARDS_SUCCESS, CLEAR_LISTS } from '../actions';
 
 export default function (state = [], action) {
   const { type, payload } = action;
@@ -49,6 +49,18 @@ export default function (state = [], action) {
     // action.lists = [{'listName': 'Chrello Board-', 'id': 1}, {'listName': 'Toy Problems-', 'id': 2}]
     console.log('inside fetch list success reducer: ', action.lists);
       return action.lists;
+
+    case FETCH_CARDS_SUCCESS:
+      newState = Object.assign([], state);
+
+      console.log('inside FETCH_CARDS_SUCCESS reducer');
+
+      newState[action.listId].cards = action.cards;
+
+      return newState;
+
+    case CLEAR_LISTS:
+      return [];
 
     default:
       return state;

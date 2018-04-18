@@ -25,13 +25,14 @@ export const fetchCardsRequest = () => {
   }};
 
 // on successful fetch
-export const fetchCardsSuccess = (jsonData) => {
-  // jsonData = [{'listName': 'Chrello Board-', 'id': 1}, {'listName': 'Toy Problems-', 'id': 2}]
+export const fetchCardsSuccess = (jsonData, listId) => {
+  // jsonData = [{'cardContent': 'card1-', 'id': 1}, {'cardContent': 'card2-', 'id': 2}]
 
   console.log('inside fetchCardsSuccess action creator: ', jsonData);
   return {
     type: FETCH_CARDS_SUCCESS,
-    lists: jsonData,
+    cards: jsonData,
+    listId,
   }
 };
 
@@ -44,18 +45,18 @@ export const fetchCardsFailure = (err) => {
 }
 
 // actual fetching function
-export const fetchLists = (listId) => {
+export const fetchCards = (listId) => {
   return async (dispatch) => {
     // trigger the spinner to tell UI we're fetching data
     dispatch(fetchCardsRequest());
     try {
       // on success
       let response = await fetch(`http://127.0.0.1:8080/api/card/${listId}`);
-      // response = [{'listName': 'Chrello Board-', 'id': 1}, {'listName': 'Toy Problems-', 'id': 2}]
+      // jsonData = [{'cardContent': 'card1-', 'id': 1}, {'cardContent': 'card2-', 'id': 2}]
       let data = await response.json();
-      console.log('List Data: ', data);
+      console.log('Card Data: ', data);
 
-      dispatch(fetchCardsSuccess(data));
+      dispatch(fetchCardsSuccess(data, listId));
     } catch(err) {
       // on failure
       dispatch(fetchCardsFailure(err));

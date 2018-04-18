@@ -2,6 +2,7 @@ export const NEW_LIST = 'NEW_LIST';
 export const FETCH_LISTS_REQUEST = 'FETCH_LISTS_REQUEST';
 export const FETCH_LISTS_SUCCESS = 'FETCH_LISTS_SUCCESS';
 export const FETCH_LISTS_FAILURE = 'FETCH_LISTS_FAILURE';
+export const CLEAR_LISTS = 'CLEAR_LISTS';
 
 export const createNewList = (listName, boardName) => {
   return {
@@ -18,7 +19,7 @@ export const fetchListsRequest = () => {
 
 // on successful fetch
 export const fetchListsSuccess = (jsonData) => {
-  // jsonData = [{'listName': 'Chrello Board-', 'id': 1}, {'listName': 'Toy Problems-', 'id': 2}]
+  // jsonData = {'1': {'listName': 'Chrello Board-', 'id': 1}, '2': {'listName': 'Toy Problems-', 'id': 2}}
 
   console.log('inside fetchListsSuccess action creator: ', jsonData);
   return {
@@ -47,11 +48,22 @@ export const fetchLists = (boardId) => {
       // response = [{'listName': 'Chrello Board-', 'id': 1}, {'listName': 'Toy Problems-', 'id': 2}]
       let data = await response.json();
       console.log('List Data: ', data);
+      const listObj = {};
 
-      dispatch(fetchListsSuccess(data));
+      data.forEach(list => {
+        listObj[list.id] = list;
+      });
+
+      dispatch(fetchListsSuccess(listObj));
     } catch(err) {
       // on failure
       dispatch(fetchListsFailure(err));
     }
+  }
+}
+
+export const clearLists = () => {
+  return {
+    type: CLEAR_LISTS,
   }
 }

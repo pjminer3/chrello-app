@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Card from '../components/card';
-import { createNewCard, deleteCard } from '../actions';
+import { createNewCard, deleteCard, fetchCards } from '../actions';
 import dbCreateNewCard from '../helpers/createCard';
 
 class List extends Component {
@@ -21,6 +21,7 @@ class List extends Component {
 
   componentDidMount() {
     // fetch all cards for specified list Id
+    this.props.fetchCards(this.props.listId);
   }
 
   handleSubmit(event) {
@@ -37,22 +38,23 @@ class List extends Component {
   }
 
   render() {
+    console.log('LIST DATA IN THE CARD GENERATION: ', this.props.lists);
     return (
       <div className="list-element">
-        <div className="list-name">{this.props.listId}</div>
+        <div className="list-name">{this.props.list}</div>
         <div className="cards">
-          {/* existing cards */}
-          {/* {this.props.list.cards.map((card, idx) => {
+          {/* renders cards if there are any */}
+          {this.props.lists[this.props.listId].cards ? this.props.lists[this.props.listId].cards.map((card, idx) => {
             return (
               <Card
-                cardContent={card}
+                cardContent={card.cardContent}
                 deleteCard={this.props.deleteCard}
-                key={`${idx}-${card}`}
+                key={`${idx}-${card.cardContent}`}
                 index={idx}
                 listId={this.props.listId}
               />
             );
-          })} */}
+          }) : null}
         </div>
         {/* new card */}
         <form onSubmit={this.handleSubmit}>
@@ -63,8 +65,12 @@ class List extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createNewCard, deleteCard }, dispatch);
+function mapStateToProps(state) {
+  return { lists: state.Lists }
 }
 
-export default connect(null, mapDispatchToProps)(List);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ createNewCard, deleteCard, fetchCards }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);

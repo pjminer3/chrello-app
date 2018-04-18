@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import Header from './header';
 import List from './list';
-import { fetchLists } from '../actions';
+import { fetchLists, clearLists } from '../actions';
 
 // eslint-disable-next-line
 class BoardPage extends Component {
@@ -20,15 +20,27 @@ class BoardPage extends Component {
     this.props.fetchLists(boardId);
   }
 
+  componentWillUnmount() {
+    console.log('closing component');
+    this.props.clearLists();
+  }
+
   render() {
     const [boardName, boardId] = this.props.activeBoard;
     console.log(this.props.lists);
+    const { lists } = this.props;
+    const listsArr = [];
+
+    for (let id in lists) {
+      listsArr.push(<List listId={lists[id].id} list={lists[id].listName} key={lists[id].id}  />)
+    }
+
     return (
       <div>
         <Header activeBoard={boardName} />
         <div className="board-title">{boardName}</div>
         <div className="lists-container">
-          {this.props.lists.map(list => <List listId={list.id} list={list.listName} key={list.id} />)}
+          {listsArr}
         </div>
       </div>
     );
@@ -46,7 +58,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchLists }, dispatch);
+  return bindActionCreators({ fetchLists, clearLists }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardPage);
