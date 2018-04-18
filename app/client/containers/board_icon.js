@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 import { setActiveBoard } from '../actions';
 
 const BoardIcon = (props) => {
-
   const boardPage = `/${props.categoryName}/${props.boardId}`;
 
   return (
@@ -17,7 +16,6 @@ const BoardIcon = (props) => {
           <p className="board-icon-title">{props.boardName}</p>
           <i className="fas fa-trash" />
         </div>
-        {/* <p className="board-icon-title">{props.boardName}</p> */}
       </div>
     </Link>
   );

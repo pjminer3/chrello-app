@@ -16,7 +16,6 @@ class BoardPage extends Component {
   }
 
   componentDidMount() {
-    console.log(typeof fetchLists);
     const [boardName, boardId] = this.props.activeBoard;
     this.props.fetchLists(boardId);
   }

@@ -14,6 +14,14 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
+    // check to see if redux state is already there
+    const categoryIds = Object.keys(this.props.categories.byId);
+    if (categoryIds.length > 0) {
+      console.log('NOT fetching categories');
+      return;
+    }
+    
+    console.log('Fetching categories');
     this.props.fetchCategories();
   }
 

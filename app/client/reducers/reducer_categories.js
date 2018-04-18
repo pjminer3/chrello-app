@@ -13,45 +13,49 @@ let categoryId = 3;
 // initiate application state with 'Personal Boards' category and no boards
 export default function (state = { byId: {}, allIds: [] }, action) {
   const { payload } = action;
+  let newState;
 
   switch (action.type) {
     case NEW_BOARD:
       // payload = {boardName, categoryName}
+      newState = Object.assign({}, state)
 
-      state.byId[payload.categoryId].boards.push([payload.boardName, boardId]);
+      newState.byId[payload.categoryId].boards.push([payload.boardName, boardId]);
       boardId++;
 
-      return Object.assign({}, state);
+      return newState;
 
     case FETCH_CATEGORIES_SUCCESS:
       return action.categories;
     
     case FETCH_BOARDS_SUCCESS:
       // add boards to proper category arrays
+      newState = Object.assign({}, state);
+      
       for (let i = 0; i < payload.length; i++) {
         let board = payload[i];
-        state.byId[board.categoryId].boards.push([board.boardName, board.boardId]);
+        newState.byId[board.categoryId].boards.push([board.boardName, board.boardId]);
       } 
-      return Object.assign({}, state);
+      return newState;
 
     case UPDATE_CATEGORIES:
       // payload = [{ categoryName, id}];
-      console.log('inside UPDATE CATEGORIES reducer');
+      newState = Object.assign({}, state);
 
       payload.forEach(category => {
         console.log(category);
-        if (!state.byId[category.id]) {
+        if (!newState.byId[category.id]) {
           console.log('adding new category: ', category.categoryName);
-          state.byId[category.id] = {
+          newState.byId[category.id] = {
             id: category.id,
             categoryName: category.categoryName,
             boards: [],
           };
-          state.allIds.push([category.categoryName, category.id]);
+          newState.allIds.push([category.categoryName, category.id]);
         }
       });
 
-      return Object.assign({}, state);
+      return newState;
 
     default:
       return state;

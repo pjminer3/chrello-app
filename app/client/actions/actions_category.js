@@ -1,6 +1,6 @@
-export const FETCH_CATEGORIES_REQUEST = 'FETCHING_CATEGORIES_REQUEST';
-export const FETCH_CATEGORIES_SUCCESS = 'FETCHING_CATEGORIES_SUCCESS';
-export const FETCH_CATEGORIES_FAILURE = 'FETCHING_CATEGORIES_FAILURE';
+export const FETCH_CATEGORIES_REQUEST = 'FETCH_CATEGORIES_REQUEST';
+export const FETCH_CATEGORIES_SUCCESS = 'FETCH_CATEGORIES_SUCCESS';
+export const FETCH_CATEGORIES_FAILURE = 'FETCH_CATEGORIES_FAILURE';
 export const UPDATE_CATEGORIES = 'UPDATE_CATEGORIES';
 
 // to show activity indicator
@@ -18,6 +18,7 @@ export const fetchCategoriesSuccess = (jsonData) => {
 
   // populate initial category state
   jsonData.forEach(obj => {
+    
     let { id, categoryName } = obj;
 
     dbState.byId[id] = {
@@ -35,7 +36,6 @@ export const fetchCategoriesSuccess = (jsonData) => {
 }};
 
 export const updateCategories = (jsonData) => {
-  console.log('Inside UPDATE CATEGORIES action creator')
   return {type: UPDATE_CATEGORIES, payload: jsonData};
 }
 
@@ -68,7 +68,6 @@ export const fetchCategories = () => {
 }
 
 export const postCategory = (categoryName) => {
-  console.log('Inside postCategory');
   return async (dispatch) => {
     try {
       let response = await fetch(`http://127.0.0.1:8080/api/category/${categoryName}`, {

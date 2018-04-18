@@ -24,11 +24,18 @@ class Category extends Component {
     this.handleNameChange = this.handleNameChange.bind(this);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log('updated component');
+  componentWillUnmount() {
+    
   }
 
   componentDidMount() {
+    // check if there are already boards
+    if (this.props.categories.byId[this.props.categoryId].boards.length > 0) {
+      console.log('NOT fetching boards');
+      return;
+    }
+
+    console.log('fetching boards');
     this.props.fetchBoards({categoryId: this.props.categoryId, categoryName: this.props.categoryName});
   }
 
