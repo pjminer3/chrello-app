@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Card from '../components/card';
-import { createNewCard, deleteCard, fetchCards } from '../actions';
+import { createNewCard, deleteCard, fetchCards, addCardToList } from '../actions';
 import dbCreateNewCard from '../helpers/createCard';
 
 class List extends Component {
@@ -26,10 +26,7 @@ class List extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // this.props.createNewCard(this.state.cardValue, this.props.listId);
-    /************************************************** */
-    dbCreateNewCard(1, this.state.cardValue); // TODO: GET HOOKED UP WITH REAL CARD VALUE
-    /************************************************** */
+    this.props.addCardToList(this.props.listId, this.state.cardValue);
     this.setState({ cardValue: '' });
   }
 
@@ -38,7 +35,6 @@ class List extends Component {
   }
 
   render() {
-    console.log('LIST DATA IN THE CARD GENERATION: ', this.props.lists);
     return (
       <div className="list-element">
         <div className="list-name">{this.props.list}</div>
@@ -70,7 +66,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createNewCard, deleteCard, fetchCards }, dispatch);
+  return bindActionCreators({ createNewCard, deleteCard, fetchCards, addCardToList }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(List);

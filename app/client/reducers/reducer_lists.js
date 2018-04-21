@@ -1,5 +1,14 @@
 // this reducer will control list state and will have mulitple cases to catch different types of actions
-import { NEW_LIST, NEW_CARD, DELETE_CARD, FETCH_LISTS_SUCCESS, FETCH_CARDS_SUCCESS, CLEAR_LISTS, UPDATE_LISTS } from '../actions';
+import {
+  NEW_LIST,
+  NEW_CARD,
+  DELETE_CARD,
+  FETCH_LISTS_SUCCESS,
+  FETCH_CARDS_SUCCESS,
+  CLEAR_LISTS,
+  UPDATE_LISTS,
+  UPDATE_CARDS,
+} from '../actions';
 
 export default function (state = {}, action) {
   const { type, payload } = action;
@@ -7,14 +16,16 @@ export default function (state = {}, action) {
   let cards;
 
   switch (type) {
+    case UPDATE_CARDS:
+      newState = Object.assign({}, state);
+      newState[action.listId].cards = action.cards;
+
+      return newState;
+
     case UPDATE_LISTS: 
     // action.lists: {'1': {'listName': 'Chrello Board-', 'id': 1}, '2': {'listName': 'Toy Problems-', 'id': 2}}  
-      console.log('action.lists: ', action.lists);
-      console.log('state (before adding new list): ', state);
 
       newState = Object.assign({}, state);
-      console.log('newState: ', newState);
-
       
       for (let i = 0; i < action.lists.length; i++) {
         let listId = action.lists[i].id;

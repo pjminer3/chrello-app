@@ -5,10 +5,11 @@ export const FETCH_CARDS_SUCCESS = 'FETCH_CARDS_SUCCESS';
 export const FETCH_CARDS_FAILURE = 'FETCH_CARDS_FAILURE';
 export const UPDATE_CARDS = 'UPDATE_CARDS';
 
-const updateCards = (arrayOfCards) => {
+const updateCards = (arrayOfCards, listId) => {
   return {
     type: UPDATE_CARDS,
     cards: arrayOfCards,
+    listId,
   }
 }
 
@@ -79,9 +80,9 @@ export const addCardToList = (listId, cardContent) => {
         method: 'POST',
       });
       let arrayOfCards = await response.json();
-      dispatch(updateCards(arrayOfCards));
+      dispatch(updateCards(arrayOfCards, listId));
     } catch (err) {
-
+      console.log('There was an error in creating the new card and/or retreiving cards from the database: ', err);
     }
   }
 };
