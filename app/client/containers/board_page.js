@@ -37,7 +37,7 @@ class BoardPage extends Component {
 
     return (
       <div>
-        <Header activeBoard={boardName} />
+        <Header activeBoardName={boardName} activeBoardId={boardId}/>
         <div className="board-title">{boardName}</div>
         <div className="lists-container">
           {listsArr}

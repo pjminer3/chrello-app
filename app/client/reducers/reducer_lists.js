@@ -1,5 +1,5 @@
 // this reducer will control list state and will have mulitple cases to catch different types of actions
-import { NEW_LIST, NEW_CARD, DELETE_CARD, FETCH_LISTS_SUCCESS, FETCH_CARDS_SUCCESS, CLEAR_LISTS } from '../actions';
+import { NEW_LIST, NEW_CARD, DELETE_CARD, FETCH_LISTS_SUCCESS, FETCH_CARDS_SUCCESS, CLEAR_LISTS, UPDATE_LISTS } from '../actions';
 
 export default function (state = [], action) {
   const { type, payload } = action;
@@ -7,6 +7,18 @@ export default function (state = [], action) {
   let cards;
 
   switch (type) {
+    case UPDATE_LISTS: 
+      console.log('INSIDE UPDATE LIST');
+      newState = Object.assign([], state);
+
+      for (let i = 0; i < action.lists.length; i++) {
+        if (newState[i].id === lists[i].id) {
+          continue;
+        }
+        newState.push(list[i]);
+      }
+      return newState;
+
     case NEW_LIST:
       // payload: { listName: listName, boardName: boardName }
       // edge case if it's a duplicate list name
@@ -47,13 +59,10 @@ export default function (state = [], action) {
 
     case FETCH_LISTS_SUCCESS:
     // action.lists = [{'listName': 'Chrello Board-', 'id': 1}, {'listName': 'Toy Problems-', 'id': 2}]
-    console.log('inside fetch list success reducer: ', action.lists);
       return action.lists;
 
     case FETCH_CARDS_SUCCESS:
       newState = Object.assign([], state);
-
-      console.log('inside FETCH_CARDS_SUCCESS reducer');
 
       newState[action.listId].cards = action.cards;
 

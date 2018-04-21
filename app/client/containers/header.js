@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { createNewList, postCategory } from '../actions';
+import { createNewList, postCategory, createListInDatabase } from '../actions';
 import dbCreateNewList from '../helpers/createList';
 
 class Header extends Component {
@@ -32,11 +32,11 @@ class Header extends Component {
   }
 
   // Creates a new List on board page and resets input value
-  callNewListActionCreator(event) {
+  async callNewListActionCreator(event) {
     event.preventDefault();
-    this.props.createNewList(this.state.nameInput, this.props.activeBoard);
+    // this.props.createNewList(this.state.nameInput, this.props.activeBoard);
     /********************************* */
-    dbCreateNewList(1, this.state.nameInput); // TODO: replace 1 with real actual boardId
+    await this.props.createListInDatabase(this.props.activeBoardId, this.state.nameInput); // TODO: replace 1 with real actual boardId
     /********************************* */
     this.setState({ nameInput: '' });
   }
@@ -74,7 +74,7 @@ class Header extends Component {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createNewList, postCategory }, dispatch);
+  return bindActionCreators({ createNewList, postCategory, createListInDatabase }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(Header);
