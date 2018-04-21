@@ -73,8 +73,8 @@ export const postCategory = (categoryName) => {
       let response = await fetch(`http://127.0.0.1:8080/api/category/${categoryName}`, {
         method: 'POST',
       });
-      let data = await response.json();
-      dispatch(updateCategories(data));
+      let allCategoriesData = await response.json();
+      dispatch(updateCategories(allCategoriesData));
     } catch(err) {
       console.log('err creating post request');
     }

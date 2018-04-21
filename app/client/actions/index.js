@@ -24,9 +24,11 @@ import {
   FETCH_LISTS_REQUEST,
   FETCH_LISTS_SUCCESS,
   CLEAR_LISTS,
+  UPDATE_LISTS,
   clearLists,
   createNewList,
   fetchLists,
+  createListInDatabase,
 } from './actions_list';
 
 import {
@@ -67,6 +69,8 @@ export {
   FETCH_LISTS_REQUEST,
   FETCH_LISTS_SUCCESS,
   CLEAR_LISTS,
+  UPDATE_LISTS,
+  createListInDatabase,
   clearLists,
   createNewCard,
   NEW_CARD,
