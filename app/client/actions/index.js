@@ -42,6 +42,7 @@ import {
   deleteCard,
   fetchCards,
   addCardToList,
+  deleteCardFromList,
 } from './actions_card';
 
 import {
@@ -86,4 +87,5 @@ export {
   FETCH_CARDS_SUCCESS,
   UPDATE_CARDS,
   addCardToList,
+  deleteCardFromList,
 };

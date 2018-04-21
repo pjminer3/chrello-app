@@ -86,3 +86,18 @@ export const addCardToList = (listId, cardContent) => {
     }
   }
 };
+
+export const deleteCardFromList = (listId, cardId) => {
+  console.log('Inside Delete Card (it\'s been called');
+  return async (dispatch) => {
+    try {
+      let response = await fetch(`http://127.0.0.1:8080/api/card/${listId}/${cardId}`, {
+        method: 'DELETE',
+      });
+      let arrayOfRemainingCards = await response.json();
+      dispatch(updateCards(arrayOfRemainingCards, listId));
+    } catch (err) {
+
+    }
+  }
+}

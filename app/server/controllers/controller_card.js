@@ -32,24 +32,31 @@ const card = {
               response.json(cards);
           })
           .catch(err => {
-              console.log('There was an error in creating the card: ', card);
+              console.log('There was an error in creating the card: ', err);
               response.sendStatus(500);
           });
     },
 
     delete: function(request, response) {
         console.log('card.delete was called');
-        const { params: { cardId } } = request;
+        const { params: { cardId, listId } } = request;
 
         Card.destroy({
             where: { id: cardId },
         })
-          .then(() => {
-              response.sendStatus(200);
-          })
-          .catch(err => {
-              response.sendStatus(500);
-          });
+            .then(() => {
+                return Card.findAll({
+                    where: { listId },
+                    attributes: ['cardContent', 'id'],
+                });
+            })
+            .then( cards => {
+                response.json(cards);
+            })
+            .catch(err => {
+                console.log('There was an error in deleting the card: ', err);
+                response.sendStatus(500);
+            });
     }
 };
 
