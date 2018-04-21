@@ -64,12 +64,10 @@ export const fetchLists = (boardId) => {
 export const createListInDatabase = (boardId, listName) => {
   return async (dispatch) => {
     try {
-      console.log('right before response')
       let response = await fetch(`http://127.0.0.1:8080/api/list/${boardId}/${listName}`, {
         method: 'POST',
       });
       let lists = await response.json();
-      console.log('Lists: ', lists);
       dispatch(updateLists(lists));
     } catch (err) {
       console.log('There was an error in adding and/or updating lists');

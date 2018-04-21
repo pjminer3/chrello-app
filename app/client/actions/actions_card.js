@@ -3,6 +3,14 @@ export const DELETE_CARD = 'DELETE_CARD';
 export const FETCH_CARDS_REQUEST = 'FETCH_CARDS_REQUEST';
 export const FETCH_CARDS_SUCCESS = 'FETCH_CARDS_SUCCESS';
 export const FETCH_CARDS_FAILURE = 'FETCH_CARDS_FAILURE';
+export const UPDATE_CARDS = 'UPDATE_CARDS';
+
+const updateCards = (arrayOfCards) => {
+  return {
+    type: UPDATE_CARDS,
+    cards: arrayOfCards,
+  }
+}
 
 export const createNewCard = (cardContent, listName) => {
     return {
@@ -63,3 +71,17 @@ export const fetchCards = (listId) => {
     }
   }
 }
+
+export const addCardToList = (listId, cardContent) => {
+  return async (dispatch) => {
+    try {
+      let response = await fetch(`http://127.0.0.1:8080/api/card/${listId}/${cardContent}`, {
+        method: 'POST',
+      });
+      let arrayOfCards = await response.json();
+      dispatch(updateCards(arrayOfCards));
+    } catch (err) {
+
+    }
+  }
+};

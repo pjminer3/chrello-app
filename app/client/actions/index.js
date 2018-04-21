@@ -37,9 +37,11 @@ import {
   FETCH_CARDS_FAILURE,
   FETCH_CARDS_REQUEST,
   FETCH_CARDS_SUCCESS,
+  UPDATE_CARDS,
   createNewCard,
   deleteCard,
   fetchCards,
+  addCardToList,
 } from './actions_card';
 
 import {

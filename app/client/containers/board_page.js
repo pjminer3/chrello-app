@@ -51,8 +51,6 @@ function mapStateToProps(state) {
   // Map the active board, that board's lists, and all lists to props
   return {
     activeBoard: state.ActiveBoard,
-    // listIds: state.Boards.byId[state.ActiveBoard[1]].lists,
-    // listItems: state.Lists.byId,
     lists: state.Lists,
   };
 }

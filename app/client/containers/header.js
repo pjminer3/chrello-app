@@ -34,10 +34,7 @@ class Header extends Component {
   // Creates a new List on board page and resets input value
   async callNewListActionCreator(event) {
     event.preventDefault();
-    // this.props.createNewList(this.state.nameInput, this.props.activeBoard);
-    /********************************* */
-    await this.props.createListInDatabase(this.props.activeBoardId, this.state.nameInput); // TODO: replace 1 with real actual boardId
-    /********************************* */
+    await this.props.createListInDatabase(this.props.activeBoardId, this.state.nameInput);
     this.setState({ nameInput: '' });
   }
 

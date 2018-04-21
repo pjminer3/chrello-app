@@ -2,7 +2,6 @@ import { Card } from '../database';
 
 const card = {
     get: function(request, response) {
-        console.log('card.get was called');
         const { params: { listId } } = request;
 
         Card.findAll({
@@ -24,7 +23,13 @@ const card = {
 
         Card.create({ listId, cardContent })
           .then(() => {
-              response.sendStatus(201);
+              return Card.findAll({
+                  where: { listId },
+                  attributes: ['cardContent', 'id'],
+              });
+          })
+          .then( cards => {
+              response.json(cards);
           })
           .catch(err => {
               console.log('There was an error in creating the card: ', card);

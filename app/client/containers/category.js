@@ -31,11 +31,9 @@ class Category extends Component {
   componentDidMount() {
     // check if there are already boards
     if (this.props.categories.byId[this.props.categoryId].boards.length > 0) {
-      console.log('NOT fetching boards');
       return;
     }
-
-    console.log('fetching boards');
+    
     this.props.fetchBoards({categoryId: this.props.categoryId, categoryName: this.props.categoryName});
   }
 
@@ -104,8 +102,7 @@ class Category extends Component {
 }
 
 function mapStateToProps(state) {
-  return { 
-    // boards: state.Boards,
+  return {
     categories: state.Categories
   };
 }

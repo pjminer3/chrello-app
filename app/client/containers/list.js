@@ -26,7 +26,7 @@ class List extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.createNewCard(this.state.cardValue, this.props.listId);
+    // this.props.createNewCard(this.state.cardValue, this.props.listId);
     /************************************************** */
     dbCreateNewCard(1, this.state.cardValue); // TODO: GET HOOKED UP WITH REAL CARD VALUE
     /************************************************** */
