@@ -1,53 +1,62 @@
 // this reducer will control board state and will have mulitple cases to catch different types of actions
 import {
-  NEW_CATEGORY,
+  UPDATE_CATEGORIES,
   FETCH_CATEGORIES_SUCCESS,
   FETCH_CATEGORIES_FAILURE,
   NEW_BOARD,
   FETCH_BOARDS_SUCCESS,
  } from '../actions';
 
+let boardId = 4;
+
 // initiate application state with 'Personal Boards' category and no boards
 export default function (state = { byId: {}, allIds: [] }, action) {
   const { payload } = action;
+  let newState;
 
   switch (action.type) {
-    case NEW_CATEGORY:
-      // payload = categoryName  
-
-      // edge case if its a duplicate category name
-      if (state.byId[payload]) {
-        return state;
-      }
-
-      // add new Category to total categories
-      return {
-        byId: Object.assign({}, state.byId, { [payload]: { id: payload, boards: [] } }),
-        allIds: [...state.allIds, action.payload],
-      };
     case NEW_BOARD:
       // payload = {boardName, categoryName}
+      newState = Object.assign({}, state)
 
-      state.byId[payload.categoryName].boards.push(payload.boardName);
+      newState.byId[payload.categoryId].boards.push([payload.boardName, boardId]);
+      boardId++;
 
-      return Object.assign({}, state);
+      return newState;
 
     case FETCH_CATEGORIES_SUCCESS:
       return action.categories;
     
     case FETCH_BOARDS_SUCCESS:
-      console.log('****** INSIDE REDUCER: ', payload);
-
+      // add boards to proper category arrays
+      newState = Object.assign({}, state);
+      
       for (let i = 0; i < payload.length; i++) {
         let board = payload[i];
-        state.byId[board.categoryName].boards.push(board.boardName);
-        console.log('********** ', board);
+        newState.byId[board.categoryId].boards.push([board.boardName, board.boardId]);
       } 
-      return Object.assign({}, state);
+      return newState;
+
+    case UPDATE_CATEGORIES:
+      // payload = [{ categoryName, id}];
+      newState = Object.assign({}, state);
+
+      payload.forEach(category => {
+        console.log(category);
+        if (!newState.byId[category.id]) {
+          console.log('adding new category: ', category.categoryName);
+          newState.byId[category.id] = {
+            id: category.id,
+            categoryName: category.categoryName,
+            boards: [],
+          };
+          newState.allIds.push([category.categoryName, category.id]);
+        }
+      });
+
+      return newState;
 
     default:
       return state;
   }
 }
-
-// TODO: CREATE THIS REDUCER 

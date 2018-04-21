@@ -24,8 +24,17 @@ class Category extends Component {
     this.handleNameChange = this.handleNameChange.bind(this);
   }
 
+  componentWillUnmount() {
+    
+  }
+
   componentDidMount() {
-    this.props.fetchBoards(this.props.categoryName);
+    // check if there are already boards
+    if (this.props.categories.byId[this.props.categoryId].boards.length > 0) {
+      return;
+    }
+    
+    this.props.fetchBoards({categoryId: this.props.categoryId, categoryName: this.props.categoryName});
   }
 
   handleNameChange(event) {
@@ -33,12 +42,10 @@ class Category extends Component {
   }
 
   // this calls the action creator with boardName and category id
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault();
-    this.props.createNewBoard(this.state.newBoard, this.props.categoryName);
-    /************************************************************************** */
-    dbCreateBoard(1, this.state.newBoard); // TODO: REPLACE 1 WITH REAL BOARD ID
-    /************************************************************************** */
+    await dbCreateBoard(this.props.categoryId, this.state.newBoard);
+    this.props.createNewBoard(this.state.newBoard, this.props.categoryId)
     this.setState({ newBoard: '', show: false });
   }
 
@@ -63,7 +70,7 @@ class Category extends Component {
         <div className="panel-body">
           <div className="row">
             <div className="board-container">
-              {this.props.boards.map( boardName => <BoardIcon categoryName={this.props.categoryName} boardName={boardName} key={boardName} />) }
+              {this.props.categories.byId[this.props.categoryId].boards.map( ([boardName, boardId]) => <BoardIcon categoryName={this.props.categoryName} categoryId={this.props.categoryId} boardName={boardName} key={boardId} boardId={boardId} />) }
             </div>
 
             <Button
@@ -95,11 +102,13 @@ class Category extends Component {
 }
 
 function mapStateToProps(state) {
-  return { boards: state.Boards };
+  return {
+    categories: state.Categories
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ createNewBoard, fetchBoards }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(Category);
+export default connect(mapStateToProps, mapDispatchToProps)(Category);

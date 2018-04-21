@@ -1,6 +1,8 @@
 // this reducer controls board state and has mulitple cases to catch different types of actions
 
-import { NEW_BOARD, NEW_LIST, FETCH_BOARDS_FAILURE, FETCH_BOARDS_SUCCESS } from '../actions';
+import { NEW_BOARD, NEW_LIST, FETCH_BOARDS_FAILURE, FETCH_BOARDS_SUCCESS, CLEAR_BOARDS } from '../actions';
+
+let boardId = 4;
 
 export default function (state = { byId: {}, allIds: [] }, action) {
   const { payload } = action;
@@ -9,24 +11,25 @@ export default function (state = { byId: {}, allIds: [] }, action) {
 
   switch (action.type) {
     case NEW_BOARD:
-      // payload = { boadName, categoryName }
+      // payload = { boardName, categoryId }
 
       // edge case: duplicate boardName
       if (state.byId[payload.boardName]) {
         return state;
       }
 
-      // add board to boards application state
-      return {
-        byId: Object.assign({}, state.byId, {
-          [payload.boardName]: {
-            id: payload.boardName,
-            category: payload.categoryName,
-            lists: [],
-          },
-        }),
-        allIds: [payload.boardName, ...state.allIds],
+      newState = Object.assign({}, state);
+      newState.byId[boardId] = {
+        id: boardId,
+        boardName: payload.boardName,
+        categoryId: payload.categoryId,
+        lists: [],
       };
+      newState.allIds = [payload.boardName, ...newState.allIds];
+
+      boardId++;
+
+      return newState;
 
     case NEW_LIST:
       // payload = { listName, boardName }
@@ -45,19 +48,21 @@ export default function (state = { byId: {}, allIds: [] }, action) {
 
       return newState;
 
-      case FETCH_BOARDS_SUCCESS:
-        newState = {byId: {}, allIds: []}
+    case FETCH_BOARDS_SUCCESS:
+      // newState = {byId: {}, allIds: []}
 
-        payload.forEach( board => {
-          newState.byId[board.boardName] = {
-            id: board.boardName,
-            category: board.categoryName,
-            lists: [],
-          }
-          newState.allIds.push(board.boardName);
-        })
-        return newState;
-        // TODO: FIGURE OUT WHY THESE AREN'T RENDERING
+      newState = Object.assign({}, state);
+
+      payload.forEach( board => {
+        newState.byId[board.boardId] = {
+          id: board.boardId,
+          boardName: board.boardName,
+          categoryId: board.categoryId,
+          lists: [],
+        }
+        newState.allIds.push([board.boardName, board.boardId]);
+      });
+      return newState;    
 
     default:
       return state;

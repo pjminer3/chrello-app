@@ -14,6 +14,14 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
+    // check to see if redux state is already there
+    const categoryIds = Object.keys(this.props.categories.byId);
+    if (categoryIds.length > 0) {
+      console.log('NOT fetching categories');
+      return;
+    }
+    
+    console.log('Fetching categories');
     this.props.fetchCategories();
   }
 
@@ -23,7 +31,7 @@ class HomePage extends Component {
         <HeaderBar type="HomePage" />
         <div className="category-container">
           {/* Renders each category in Redux State */}
-          {this.props.categories.allIds.map(category => <Category key={category} categoryName={category} boards={this.props.categories.byId[category].boards} />)}
+          {this.props.categories.allIds.map(([categoryName, categoryId]) => <Category key={categoryId} categoryId={categoryId} categoryName={categoryName}  boards={this.props.categories.byId[categoryId].boards} />)}
         </div>
       </div>
     );
@@ -38,7 +46,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCategories: fetchCategories }, dispatch);
+  return bindActionCreators({ fetchCategories }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

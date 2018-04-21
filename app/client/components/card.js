@@ -1,7 +1,5 @@
 import React from 'react';
 
-import dbDeleteCard from '../helpers/deleteCard';
-
 const Card = (props) => {
   return (
     <div className="card">
@@ -10,10 +8,7 @@ const Card = (props) => {
         className="close"
         aria-label="Close"
         onClick={() => {
-          /************************************************** */
-          dbDeleteCard(1); // TODO FILL THIS WITH PROPER CARDID
-          /************************************************** */
-          props.deleteCard(props.listId, props.index)
+          props.deleteCard(props.listId, props.cardId)
         }}
       >
         <span aria-hidden="true">&times;</span>

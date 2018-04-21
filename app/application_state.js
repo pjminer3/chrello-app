@@ -7,23 +7,26 @@
 const applicationState = {
   Categories: {
     byId: {
-      'Personal Boards': {
-        id: 'Personal Boards',
+      1: {
+        id: 1,
+        categoryName: 'Personal Boards',
         boards: [],
       },
-      TMs: {
-        id: 'TMs',
-        boards: ['Danny', 'Kirk'],
+      2: {
+        id: 2,
+        categoryName: 'TMs',
+        boards: [['Danny', 1], ['Kirk', 2]],
       },
     },
-    allIds: ['Personal Boards', 'TMs'],
+    allIds: [['Personal Boards', 1], ['TMs', 2]],
   },
   Boards: {
     byId: {
-      Danny: {
-        id: 'Danny',
-        category: 'TMs',
-        lists: ['Chrello Board', 'Toy Problems'],
+      1: {
+        id: 1,
+        boardName: 'Danny',
+        categoryId: 2,
+        lists: [['Chrello Board', 1], ['Toy Problems', 2]],
       },
       Kirk: {
         id: 'Kirk',
@@ -31,23 +34,9 @@ const applicationState = {
         lists: [],
       },
     },
-    allIds: ['Danny', 'Kirk'],
+    allIds: [['Danny', 1], ['Kirk', 2]],
   },
-  Lists: {
-    byId: {
-      'Chrello Board': {
-        id: 'Chrello Board',
-        board: 'Danny',
-        cards: ['card1', 'card2'],
-      },
-      'Toy Problems': {
-        id: 'Toy Problems',
-        board: 'Danny',
-        cards: ['card3'],
-      },
-    },
-    allIds: ['list1', 'list2'],
-  },
+  Lists: [],
 };
 
 export default applicationState;

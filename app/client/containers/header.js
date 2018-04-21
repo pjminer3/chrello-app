@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { createNewCategory, createNewList } from '../actions';
-import dbCreateNewCategory from '../helpers/createCategory';
+import { createNewList, postCategory, createListInDatabase } from '../actions';
 import dbCreateNewList from '../helpers/createList';
 
 class Header extends Component {
@@ -15,7 +14,6 @@ class Header extends Component {
       nameInput: '',
     };
     
-
     this.updateState = this.updateState.bind(this);
     this.callNewCategoryActionCreator = this.callNewCategoryActionCreator.bind(this);
     this.callNewListActionCreator = this.callNewListActionCreator.bind(this);
@@ -27,20 +25,16 @@ class Header extends Component {
   }
 
   // Creates a new Category on home page and resets input value
-  callNewCategoryActionCreator(event) {
+  async callNewCategoryActionCreator(event) {
     event.preventDefault();
-    this.props.createNewCategory(this.state.nameInput);
-    dbCreateNewCategory(this.state.nameInput);
+    await this.props.postCategory(this.state.nameInput);
     this.setState({ nameInput: '' });
   }
 
   // Creates a new List on board page and resets input value
-  callNewListActionCreator(event) {
+  async callNewListActionCreator(event) {
     event.preventDefault();
-    this.props.createNewList(this.state.nameInput, this.props.activeBoard);
-    /********************************* */
-    dbCreateNewList(1, this.state.nameInput); // TODO: replace 1 with real actual boardId
-    /********************************* */
+    await this.props.createListInDatabase(this.props.activeBoardId, this.state.nameInput);
     this.setState({ nameInput: '' });
   }
 
@@ -77,7 +71,7 @@ class Header extends Component {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createNewCategory, createNewList }, dispatch);
+  return bindActionCreators({ createNewList, postCategory, createListInDatabase }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(Header);

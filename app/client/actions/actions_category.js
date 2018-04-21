@@ -1,39 +1,33 @@
-import axios from 'axios';
-
-export const NEW_CATEGORY = 'NEW_CATEGORY';
-export const FETCH_CATEGORIES_REQUEST = 'FETCHING_CATEGORIES_REQUEST';
-export const FETCH_CATEGORIES_SUCCESS = 'FETCHING_CATEGORIES_SUCCESS';
-export const FETCH_CATEGORIES_FAILURE = 'FETCHING_CATEGORIES_FAILURE';
-
-export const createNewCategory = (categoryName) => {
-  return {
-    type: NEW_CATEGORY,
-    payload: categoryName,
-  };
-};
+export const FETCH_CATEGORIES_REQUEST = 'FETCH_CATEGORIES_REQUEST';
+export const FETCH_CATEGORIES_SUCCESS = 'FETCH_CATEGORIES_SUCCESS';
+export const FETCH_CATEGORIES_FAILURE = 'FETCH_CATEGORIES_FAILURE';
+export const UPDATE_CATEGORIES = 'UPDATE_CATEGORIES';
 
 // to show activity indicator
-export const fetchCategoriesRequest = () => {
-  console.log('inside fetchCategoriesRequest');
-  
+export const fetchCategoriesRequest = () => {  
   return {
     type: FETCH_CATEGORIES_REQUEST
   }};
 
 // on successful fetch
 export const fetchCategoriesSuccess = (jsonData) => {
-  console.log('Inside fetchCategoriesSuccess');
-  console.log('DATA: ', jsonData); 
+  // jsonData = [{'categoryName': 'Personal Boards', 'id': 1}, {'categoryName': 'TMs', 'id': 2}]
 
   // create initial category state provided by DB
   const dbState = { byId: {}, allIds: [] };
+
+  // populate initial category state
   jsonData.forEach(obj => {
-    let { categoryName } = obj;
-    dbState.byId[categoryName] = {
-      id: categoryName,
+    
+    let { id, categoryName } = obj;
+
+    dbState.byId[id] = {
+      id,
+      categoryName,
       boards: [],
     };
-    dbState.allIds.push(categoryName);
+
+    dbState.allIds.push([categoryName, id]);
   });
 
   return {
@@ -41,9 +35,12 @@ export const fetchCategoriesSuccess = (jsonData) => {
     categories: dbState,
 }};
 
+export const updateCategories = (jsonData) => {
+  return {type: UPDATE_CATEGORIES, payload: jsonData};
+}
+
 // on failed fetch
 export const fetchCategoriesFailure = (err) => {
-  console.log('Inside fetchCategoriesFailure');
   return {
     type: FETCH_CATEGORIES_FAILURE,
     error: err,
@@ -59,12 +56,27 @@ export const fetchCategories = () => {
     try {
       // on success
       let response = await fetch('http://127.0.0.1:8080/api/category');
+      // response = [{'categoryName': 'Personal Boards', 'id': 1}, {'categoryName': 'TMs', 'id': 2}]
       let data = await response.json();
 
       dispatch(fetchCategoriesSuccess(data));
     } catch(err) {
       // on failure
       dispatch(fetchCategoriesFailure(err));
+    }
+  }
+}
+
+export const postCategory = (categoryName) => {
+  return async (dispatch) => {
+    try {
+      let response = await fetch(`http://127.0.0.1:8080/api/category/${categoryName}`, {
+        method: 'POST',
+      });
+      let allCategoriesData = await response.json();
+      dispatch(updateCategories(allCategoriesData));
+    } catch(err) {
+      console.log('err creating post request');
     }
   }
 }

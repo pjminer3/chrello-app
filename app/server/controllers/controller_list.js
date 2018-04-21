@@ -3,11 +3,11 @@ import { List } from '../database';
 const list = {
     get: function(request, response) {
         console.log('list.get was called');
-        const { params: {boardId } } = request;
+        const { params: { boardId } } = request;
 
         List.findAll({
             where: { boardId },
-            attributes: ['listName']
+            attributes: ['listName', 'id'],
         })
           .then(lists => {
               response.json(lists);
@@ -22,11 +22,17 @@ const list = {
         const { params: {boardId, listName } } = request;
 
         List.create({ boardId, listName })
-          .then(() => {
-              response.sendStatus(201);
+          .then( list => {
+              return List.findAll({
+                  where: { boardId },
+                  attributes: ['listName', 'id'],
+              });
+          })
+          .then( lists => {
+              response.json(lists);
           })
           .catch(err => {
-            console.log('There was an error in creating the new list: ', err);
+            console.log('There was an error in creating a new list and/or retreiving lists afterwards: ', err);
             response.sendStatus(500);
           });
     },

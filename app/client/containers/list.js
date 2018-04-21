@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Card from '../components/card';
-import { createNewCard, deleteCard } from '../actions';
+import { createNewCard, deleteCard, fetchCards, addCardToList, deleteCardFromList } from '../actions';
 import dbCreateNewCard from '../helpers/createCard';
 
 class List extends Component {
+  // props: listId={list.id} list={list.listName}
   constructor(props) {
     super(props);
 
@@ -18,12 +19,14 @@ class List extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidMount() {
+    // fetch all cards for specified list Id
+    this.props.fetchCards(this.props.listId);
+  }
+
   handleSubmit(event) {
     event.preventDefault();
-    this.props.createNewCard(this.state.cardValue, this.props.listId);
-    /************************************************** */
-    dbCreateNewCard(1, this.state.cardValue); // TODO: GET HOOKED UP WITH REAL CARD VALUE
-    /************************************************** */
+    this.props.addCardToList(this.props.listId, this.state.cardValue);
     this.setState({ cardValue: '' });
   }
 
@@ -34,20 +37,21 @@ class List extends Component {
   render() {
     return (
       <div className="list-element">
-        <div className="list-name">{this.props.listId}</div>
+        <div className="list-name">{this.props.list}</div>
         <div className="cards">
-          {/* existing cards */}
-          {this.props.list.cards.map((card, idx) => {
+          {/* renders cards if there are any */}
+          {this.props.lists[this.props.listId].cards ? this.props.lists[this.props.listId].cards.map((card, idx) => {
             return (
               <Card
-                cardContent={card}
-                deleteCard={this.props.deleteCard}
-                key={`${idx}-${card}`}
+                cardId={card.id}
+                cardContent={card.cardContent}
+                deleteCard={this.props.deleteCardFromList}
+                key={`${idx}-${card.cardContent}`}
                 index={idx}
                 listId={this.props.listId}
               />
             );
-          })}
+          }) : null}
         </div>
         {/* new card */}
         <form onSubmit={this.handleSubmit}>
@@ -58,8 +62,12 @@ class List extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createNewCard, deleteCard }, dispatch);
+function mapStateToProps(state) {
+  return { lists: state.Lists }
 }
 
-export default connect(null, mapDispatchToProps)(List);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ createNewCard, deleteCard, fetchCards, addCardToList, deleteCardFromList }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);

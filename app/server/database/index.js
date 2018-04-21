@@ -25,13 +25,13 @@ db.sync({ force: true })
     return Category.create({ categoryName: 'TMs-' });
   })
   .then(() => {
-    return Board.create({ boardName: 'I\'m in the Database!', categoryCategoryName: 'Personal Boards-' });
+    return Board.create({ boardName: 'I\'m in the Database!', categoryId: 1 });
   })
   .then(() => {
-    return Board.create({ boardName: 'Danny-', categoryCategoryName: 'TMs-' });
+    return Board.create({ boardName: 'Danny-', categoryId: 2 });
   })
   .then(() => {
-    return Board.create({ boardName: 'Kirk-', categoryCategoryName: 'TMs-' });
+    return Board.create({ boardName: 'Kirk-', categoryId: 2 });
   })
   .then(() => {
     return List.create({ listName: 'Chrello Board-', boardId: 2 });
