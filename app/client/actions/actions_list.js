@@ -6,6 +6,7 @@ export const CLEAR_LISTS = 'CLEAR_LISTS';
 export const UPDATE_LISTS = 'UPDATE_LISTS';
 
 export const updateLists = (lists) => { 
+  // lists: {'1': {'listName': 'Chrello Board-', 'id': 1}, '2': {'listName': 'Toy Problems-', 'id': 2}}
   return { type: UPDATE_LISTS, lists, }
 };
   
@@ -16,13 +17,13 @@ export const fetchListsRequest = () => {
   }};
 
 // on successful fetch
-export const fetchListsSuccess = (jsonData) => {
-  // jsonData = {'1': {'listName': 'Chrello Board-', 'id': 1}, '2': {'listName': 'Toy Problems-', 'id': 2}}
+export const fetchListsSuccess = (lists) => {
+  // lists = {'1': {'listName': 'Chrello Board-', 'id': 1}, '2': {'listName': 'Toy Problems-', 'id': 2}}
 
-  console.log('inside fetchListsSuccess action creator: ', jsonData);
+  console.log('inside fetchListsSuccess action creator: ', lists);
   return {
     type: FETCH_LISTS_SUCCESS,
-    lists: jsonData,
+    lists,
   }
 };
 
